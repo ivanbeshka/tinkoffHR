@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_register"
+    app:startDestination="@id/registerFragment">
+
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.tinkoff.hr.RegisterFragment"
+        android:label="RegisterFragment" >
+        <action
+            android:id="@+id/action_registerFragment_to_registerCodeFragment"
+            app:destination="@id/registerCodeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerCodeFragment"
+        android:name="com.tinkoff.hr.RegisterCodeFragment"
+        android:label="RegisterCodeFragment" />
+</navigation>

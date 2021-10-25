@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">HR</string>
+    <string name="email">E-mail address</string>
+    <string name="your_tcr">ТВОЙ ТЦР</string>
+    <string name="hello_register">Привет! Для того, чтобы начать работу укажи свой рабочий email и мы вышлем на него qr-код, который поможет тебе войти :)</string>
+    <string name="start_work">Начать работу</string>
+    <string name="input_code">Введите код из письма:</string>
+    <string name="resend">Отправить заново</string>
+</resources>
