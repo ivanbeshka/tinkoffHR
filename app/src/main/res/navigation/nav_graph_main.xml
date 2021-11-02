@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph_main">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_main"
+    app:startDestination="@id/orders">
 
+    <fragment
+        android:id="@+id/faq"
+        android:name="com.tinkoff.hr.view.faq.FAQFragment"
+        android:label="FAQFragment"
+        tools:layout="@layout/fragment_faq"/>
+    <fragment
+        android:id="@+id/employees"
+        android:name="com.tinkoff.hr.view.employees.EmployeesFragment"
+        android:label="EmployeesFragment"
+        tools:layout="@layout/fragment_employees">
+        <action
+            android:id="@+id/action_employees_to_faq"
+            app:destination="@id/faq" />
+    </fragment>
+    <fragment
+        android:id="@+id/orders"
+        android:name="com.tinkoff.hr.view.orders.OrdersFragment"
+        android:label="OrdersFragment"
+        tools:layout="@layout/fragment_orders">
+        <action
+            android:id="@+id/action_orders_to_employees"
+            app:destination="@id/employees" />
+    </fragment>
 </navigation>

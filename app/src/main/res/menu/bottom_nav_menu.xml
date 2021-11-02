@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/orders"
+        android:enabled="true"
+        android:icon="@drawable/ic_checklist"
+        android:menuCategory="secondary"
+        android:title="@string/orders" />
 
+    <item
+        android:id="@+id/employees"
+        android:enabled="true"
+        android:menuCategory="secondary"
+        android:icon="@drawable/ic_people"
+        android:title="@string/employees" />
+
+
+    <item
+        android:id="@+id/faq"
+        android:enabled="true"
+        android:menuCategory="secondary"
+        android:icon="@drawable/ic_question_answer"
+        android:title="@string/faq" />
 </menu>

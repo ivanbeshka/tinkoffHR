@@ -9,12 +9,12 @@
         android:layout_height="wrap_content"
         android:text="@string/input_code"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/firstPinView"
+        app:layout_constraintBottom_toTopOf="@+id/et_code"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.chaos.view.PinView
-        android:id="@+id/firstPinView"
+        android:id="@+id/et_code"
         style="@style/PinWidget.PinView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firstPinView" />
+        app:layout_constraintTop_toBottomOf="@+id/et_code" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

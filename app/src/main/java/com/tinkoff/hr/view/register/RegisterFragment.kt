@@ -1,7 +1,6 @@
-package com.tinkoff.hr
+package com.tinkoff.hr.view.register
 
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
+import com.tinkoff.hr.R
 
 class RegisterFragment : Fragment(){
 
