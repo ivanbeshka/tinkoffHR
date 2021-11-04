@@ -10,22 +10,19 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.tinkoff.hr.R
+import com.tinkoff.hr.databinding.FragmentRegisterBinding
 
 class RegisterFragment : Fragment(){
-
-    private lateinit var etEmail: TextInputEditText
-    private lateinit var btnStartWork: MaterialButton
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_register, container, false)
-        initViews(view)
+        val binding = FragmentRegisterBinding.inflate(inflater, container, false)
 
-        btnStartWork.setOnClickListener {
-            val email = etEmail.text.toString()
+        binding.btnStartWork.setOnClickListener {
+            val email = binding.etEmail.text.toString()
             if (email.isNotEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
                 findNavController().navigate(R.id.registerCodeFragment)
             } else {
@@ -33,11 +30,6 @@ class RegisterFragment : Fragment(){
             }
         }
 
-        return view
-    }
-
-    private fun initViews(view: View){
-        etEmail = view.findViewById(R.id.et_email)
-        btnStartWork = view.findViewById(R.id.btn_start_work)
+        return binding.root
     }
 }

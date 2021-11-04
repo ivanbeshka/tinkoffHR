@@ -9,18 +9,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.tinkoff.hr.R
 import com.tinkoff.hr.data.FAQ
+import com.tinkoff.hr.databinding.FragmentFaqBinding
 
 class FAQFragment : Fragment() {
-
-    private lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_faq, container, false)
-        initViews(view)
+        val binding = FragmentFaqBinding.inflate(inflater, container, false)
 
         val faq = FAQ(
             "Клиники по ДМС", "Номер  полиса должен быть у тебя на почте (отправитель allianz);\n" +
@@ -28,15 +26,12 @@ class FAQFragment : Fragment() {
                     "Если есть клиника, в которую ты ходишь, но ее нет в переченье, то пиши сюда tcr_dms@tinkoff.ru;"
         )
 
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = FAQAdapter(
+        binding.rvFaq.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvFaq.adapter = FAQAdapter(
             listOf(faq, faq, faq, faq, faq, faq, faq, faq, faq, faq, faq)
         )
 
-        return view
+        return binding.root
     }
 
-    private fun initViews(view: View) {
-        recyclerView = view.findViewById(R.id.rv_faq)
-    }
 }

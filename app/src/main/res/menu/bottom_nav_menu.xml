@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/orders"
+        android:id="@+id/nav_graph_orders"
         android:enabled="true"
         android:icon="@drawable/ic_checklist"
         android:menuCategory="secondary"
         android:title="@string/orders" />
 
     <item
-        android:id="@+id/employees"
+        android:id="@+id/nav_graph_employees"
         android:enabled="true"
         android:menuCategory="secondary"
         android:icon="@drawable/ic_people"
@@ -16,7 +16,7 @@
 
 
     <item
-        android:id="@+id/faq"
+        android:id="@+id/nav_graph_faq"
         android:enabled="true"
         android:menuCategory="secondary"
         android:icon="@drawable/ic_question_answer"

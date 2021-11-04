@@ -6,11 +6,13 @@
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/drawable/ic_email.xml" value="0.2911458333333333" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/activity_main.xml" value="0.275" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/fragment_clinics_head.xml" value="0.25" />
+        <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/fragment_content_container.xml" value="0.275" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/fragment_employees.xml" value="0.275" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/fragment_faq.xml" value="0.275" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/fragment_orders.xml" value="0.275" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/fragment_register.xml" value="0.275" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/fragment_register_code.xml" value="0.275" />
+        <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/fragment_register_container.xml" value="0.275" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/item_faq.xml" value="0.275" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/menu/bottom_nav_menu.xml" value="0.275" />
       </map>

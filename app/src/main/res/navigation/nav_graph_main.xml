@@ -1,31 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_main"
-    app:startDestination="@id/orders">
+    app:startDestination="@id/fragmentRegisterContainer">
+
 
     <fragment
-        android:id="@+id/faq"
-        android:name="com.tinkoff.hr.view.faq.FAQFragment"
-        android:label="FAQFragment"
-        tools:layout="@layout/fragment_faq"/>
-    <fragment
-        android:id="@+id/employees"
-        android:name="com.tinkoff.hr.view.employees.EmployeesFragment"
-        android:label="EmployeesFragment"
-        tools:layout="@layout/fragment_employees">
+        android:id="@+id/fragmentRegisterContainer"
+        android:name="com.tinkoff.hr.view.FragmentRegisterContainer"
+        android:label="FragmentRegisterContainer" >
         <action
-            android:id="@+id/action_employees_to_faq"
-            app:destination="@id/faq" />
+            android:id="@+id/action_fragmentRegisterContainer_to_fragmentContentContainer"
+            app:destination="@id/fragmentContentContainer"
+            app:popUpTo="@id/fragmentRegisterContainer"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
-        android:id="@+id/orders"
-        android:name="com.tinkoff.hr.view.orders.OrdersFragment"
-        android:label="OrdersFragment"
-        tools:layout="@layout/fragment_orders">
+        android:id="@+id/fragmentContentContainer"
+        android:name="com.tinkoff.hr.view.FragmentContentContainer"
+        android:label="FragmentContentContainer" >
         <action
-            android:id="@+id/action_orders_to_employees"
-            app:destination="@id/employees" />
+            android:id="@+id/action_fragmentContentContainer_to_fragmentRegisterContainer"
+            app:destination="@id/fragmentRegisterContainer"
+            app:popUpTo="@id/fragmentContentContainer"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
