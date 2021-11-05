@@ -1,16 +1,15 @@
 package com.tinkoff.hr.view
 
 import android.os.Bundle
-import android.view.View
+import android.os.Handler
+import android.os.Looper
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.tinkoff.hr.R
-import com.tinkoff.hr.utils.setupWithNavController
 import com.tinkoff.hr.viewmodels.RegisterViewModel
 
 class MainActivity : AppCompatActivity(){
@@ -19,7 +18,8 @@ class MainActivity : AppCompatActivity(){
 
     private lateinit var navController: NavController
 
-    private var isLogin = false //todo
+    private var isLogin = true //todo
+    private var isPressedBack = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +49,13 @@ class MainActivity : AppCompatActivity(){
             val contentNavController = findNavController(R.id.nav_host_fragment_content)
             val isUp = contentNavController.navigateUp()
             if (!isUp){
-                super.onBackPressed()
+                if (isPressedBack) {
+                    super.onBackPressed()
+                }
+                isPressedBack = true
+                Toast.makeText(this, "Нажмите ещё раз для выхода", Toast.LENGTH_SHORT).show()
+
+                Handler(Looper.getMainLooper()).postDelayed(Runnable { isPressedBack = false }, 2000)
             }
         } else {
             navController.navigateUp()

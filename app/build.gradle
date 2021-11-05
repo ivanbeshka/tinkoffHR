@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -47,6 +48,8 @@ dependencies {
 
     //expandable layout
     implementation 'com.github.cachapa:ExpandableLayout:2.9.2'
+    //code edit text
+    implementation 'io.github.chaosleung:pinview:1.4.4'
 
     //navigation
     implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
@@ -58,8 +61,6 @@ dependencies {
 
     //okhttp
     implementation 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
-
-    implementation 'io.github.chaosleung:pinview:1.4.4'
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

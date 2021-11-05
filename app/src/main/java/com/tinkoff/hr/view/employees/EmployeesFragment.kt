@@ -5,17 +5,44 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.tinkoff.hr.R
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.tinkoff.hr.data.Employee
+import com.tinkoff.hr.databinding.FragmentEmployeesBinding
 
-class EmployeesFragment : Fragment() {
+class EmployeesFragment : Fragment(), EmployeesAdapter.OnItemClickListener {
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_employees, container, false)
+        val binding = FragmentEmployeesBinding.inflate(inflater, container, false)
 
-        return view
+        val employee = Employee("this_is_employee@gmail.com", "Иванов Александр Александрович")
+
+        binding.rvEmployees.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvEmployees.adapter = EmployeesAdapter(
+            listOf(
+                employee,
+                employee,
+                employee,
+                employee,
+                employee,
+                employee,
+                employee,
+                employee,
+                employee,
+                employee,
+                employee
+            ),
+            this
+        )
+
+        return binding.root
+    }
+
+    override fun onItemClick(v: View, employeeEmail: String) {
+        findNavController().navigate(EmployeesFragmentDirections.actionEmployeesToEmployeeDescFragment(employeeEmail))
     }
 }

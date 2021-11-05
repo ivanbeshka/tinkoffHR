@@ -9,6 +9,20 @@
         android:id="@+id/employees"
         android:name="com.tinkoff.hr.view.employees.EmployeesFragment"
         android:label="EmployeesFragment"
-        tools:layout="@layout/fragment_employees"/>
+        tools:layout="@layout/fragment_employees">
+        <action
+            android:id="@+id/action_employees_to_employeeDescFragment"
+            app:destination="@id/employeeDescFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/employeeDescFragment"
+        android:name="com.tinkoff.hr.view.employees.EmployeeDescFragment"
+        android:label="EmployeeDescFragment"
+        tools:layout="@layout/fragment_employee_desc">
+        <argument
+            android:name="employeeEmail"
+            app:argType="string"
+            app:nullable="false"/>
+    </fragment>
 
 </navigation>
