@@ -32,11 +32,8 @@ class EmployeeDescFragment : Fragment() {
     }
 
     private fun setEditableListeners(binding: FragmentEmployeeDescBinding) {
-        setEditableOnClick(binding.tilProject, binding.etProject)
-        setEditableOnClick(binding.tilAchievement, binding.etAchievement)
-        setEditableOnClick(binding.tilCompanyPosition, binding.etCompanyPosition)
         setEditableOnClick(binding.tilStatus, binding.etStatus)
-        setEditableOnClick(binding.tilTableNum, binding.etTableNum)
+        setEditableOnClick(binding.tilAboutMe, binding.etAboutMe)
     }
 
     private fun setEditableOnClick(til: TextInputLayout, et: TextInputEditText) {
