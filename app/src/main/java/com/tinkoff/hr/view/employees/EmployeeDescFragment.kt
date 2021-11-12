@@ -27,7 +27,6 @@ class EmployeeDescFragment : Fragment() {
         setEmployee(binding)
         setEditableListeners(binding)
 
-
         return binding.root
     }
 
