@@ -17,7 +17,6 @@ class FAQAdapter(private val data: List<FAQ>) : RecyclerView.Adapter<FAQAdapter.
     class ViewHolder(val binding: ItemFaqBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(faq: FAQ){
             binding.faq = faq
-            binding.executePendingBindings()
         }
     }
 
