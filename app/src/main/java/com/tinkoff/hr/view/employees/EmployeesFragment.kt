@@ -21,7 +21,6 @@ class EmployeesFragment : Fragment(), EmployeesAdapter.OnItemClickListener {
 
         val employee = Employee("this_is_employee@gmail.com", "Иванов Александр Александрович")
 
-        binding.rvEmployees.layoutManager = LinearLayoutManager(requireContext())
         binding.rvEmployees.adapter = EmployeesAdapter(
             listOf(
                 employee,
