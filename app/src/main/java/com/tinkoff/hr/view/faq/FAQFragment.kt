@@ -26,6 +26,7 @@ class FAQFragment : Fragment() {
                     "Если есть клиника, в которую ты ходишь, но ее нет в переченье, то пиши сюда tcr_dms@tinkoff.ru;"
         )
 
+        binding.rvFaq.layoutManager = LinearLayoutManager(requireContext())
         binding.rvFaq.adapter = FAQAdapter(
             listOf(faq, faq, faq, faq, faq, faq, faq, faq, faq, faq, faq)
         )
