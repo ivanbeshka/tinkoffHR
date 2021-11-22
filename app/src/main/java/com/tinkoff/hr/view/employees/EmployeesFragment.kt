@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.tinkoff.hr.data.Employee
 import com.tinkoff.hr.databinding.FragmentEmployeesBinding
 
@@ -21,22 +20,8 @@ class EmployeesFragment : Fragment(), EmployeesAdapter.OnItemClickListener {
 
         val employee = Employee("this_is_employee@gmail.com", "Иванов Александр Александрович")
 
-        binding.rvEmployees.adapter = EmployeesAdapter(
-            listOf(
-                employee,
-                employee,
-                employee,
-                employee,
-                employee,
-                employee,
-                employee,
-                employee,
-                employee,
-                employee,
-                employee
-            ),
-            this
-        )
+        binding.rvEmployees.adapter = EmployeesAdapter(this)
+        (binding.rvEmployees.adapter as EmployeesAdapter).setData(listOf(employee))
 
         return binding.root
     }
