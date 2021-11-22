@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center">
 
     <data>
         <variable
@@ -27,7 +28,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/shapeableImageView2"
@@ -45,6 +46,8 @@
                     android:layout_margin="16dp"
                     android:layout_marginTop="8dp"
                     android:gravity="center"
+                    android:lines="4"
+                    android:ellipsize="end"
                     android:text="@{order.name}"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"

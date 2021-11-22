@@ -24,9 +24,10 @@ class FiltersAdapter(private val listener: OnFilterClickListener) : RecyclerView
 
         holder.binding.filter = filter
 
-
-        holder.binding.chipFilter.setOnCheckedChangeListener { chip, isChecked ->
-            listener.onFilterClick(isChecked, position)
+        holder.binding.chipFilter.setOnClickListener {
+            val isSelected = !data[position].isSelected
+            data[position].isSelected = isSelected
+            listener.onFilterClick(isSelected, position)
         }
     }
 
@@ -41,6 +42,6 @@ class FiltersAdapter(private val listener: OnFilterClickListener) : RecyclerView
     }
 
     interface OnFilterClickListener{
-        fun onFilterClick(isChecked: Boolean, position: Int)
+        fun onFilterClick(isSelected: Boolean, position: Int)
     }
 }

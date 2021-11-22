@@ -61,7 +61,7 @@ class OrdersAdapter(
                 )
             )
         } else {
-            v.elevation = 0f
+            v.elevation = 7f
             v.setCardBackgroundColor(
                 ContextCompat.getColor(
                     v.context,
