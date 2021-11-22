@@ -11,6 +11,8 @@ import com.tinkoff.hr.databinding.FragmentEmployeesBinding
 
 class EmployeesFragment : Fragment(), EmployeesAdapter.OnItemClickListener {
 
+    private val employeesAdapter = EmployeesAdapter(this)
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -20,8 +22,8 @@ class EmployeesFragment : Fragment(), EmployeesAdapter.OnItemClickListener {
 
         val employee = Employee("this_is_employee@gmail.com", "Иванов Александр Александрович")
 
-        binding.rvEmployees.adapter = EmployeesAdapter(this)
-        (binding.rvEmployees.adapter as EmployeesAdapter).setData(listOf(employee))
+        binding.rvEmployees.adapter = employeesAdapter
+        employeesAdapter.setData(listOf(employee))
 
         return binding.root
     }

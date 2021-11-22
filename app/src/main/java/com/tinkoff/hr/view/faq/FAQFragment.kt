@@ -13,6 +13,8 @@ import com.tinkoff.hr.databinding.FragmentFaqBinding
 
 class FAQFragment : Fragment() {
 
+    private val faqAdapter = FAQAdapter()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -26,8 +28,8 @@ class FAQFragment : Fragment() {
                     "Если есть клиника, в которую ты ходишь, но ее нет в переченье, то пиши сюда tcr_dms@tinkoff.ru;"
         )
 
-        binding.rvFaq.adapter = FAQAdapter()
-        (binding.rvFaq.adapter as FAQAdapter).setData(listOf(faq))
+        binding.rvFaq.adapter = faqAdapter
+        faqAdapter.setData(listOf(faq))
 
         return binding.root
     }

@@ -15,12 +15,11 @@ import com.tinkoff.hr.viewmodels.OrdersViewModel
 
 class OrdersFragment : Fragment(), OrdersAdapter.OnItemClickListener, FiltersAdapter.OnFilterClickListener {
 
-    private companion object {
-        const val SPAN_COUNT = 2
-    }
-
     private val filtersViewModel: FiltersViewModel by viewModels()
     private val ordersViewModel: OrdersViewModel by viewModels()
+
+    private val ordersAdapter = OrdersAdapter(this)
+    private val filtersAdapter= FiltersAdapter(this)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,17 +28,15 @@ class OrdersFragment : Fragment(), OrdersAdapter.OnItemClickListener, FiltersAda
     ): View? {
         val binding = FragmentOrdersBinding.inflate(inflater, container, false)
 
-
         binding.rvOrders.layoutManager = GridLayoutManager(requireContext(), SPAN_COUNT)
-        binding.rvOrders.adapter = OrdersAdapter(this)
-
+        binding.rvOrders.adapter = ordersAdapter
         ordersViewModel.getOrders().observe(viewLifecycleOwner){
-            (binding.rvOrders.adapter as OrdersAdapter).setData(it)
+            ordersAdapter.setData(it)
         }
 
-        binding.rvFilters.adapter = FiltersAdapter(this)
+        binding.rvFilters.adapter = filtersAdapter
         filtersViewModel.getFilters().observe(viewLifecycleOwner){
-            (binding.rvFilters.adapter as FiltersAdapter).setData(it)
+            filtersAdapter.setData(it)
         }
 
         return binding.root
@@ -51,5 +48,9 @@ class OrdersFragment : Fragment(), OrdersAdapter.OnItemClickListener, FiltersAda
 
     override fun onItemClick(position: Int, isSelected: Boolean) {
         ordersViewModel.setIsSelected(position, isSelected)
+    }
+
+    private companion object {
+        const val SPAN_COUNT = 2
     }
 }
