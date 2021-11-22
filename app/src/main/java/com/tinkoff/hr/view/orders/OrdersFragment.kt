@@ -29,6 +29,7 @@ class OrdersFragment : Fragment(), OrdersAdapter.OnItemClickListener, FiltersAda
     ): View? {
         val binding = FragmentOrdersBinding.inflate(inflater, container, false)
 
+
         binding.rvOrders.layoutManager = GridLayoutManager(requireContext(), SPAN_COUNT)
         binding.rvOrders.adapter = OrdersAdapter(this)
 

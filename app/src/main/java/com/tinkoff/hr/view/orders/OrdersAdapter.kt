@@ -1,6 +1,5 @@
 package com.tinkoff.hr.view.orders
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -45,6 +44,7 @@ class OrdersAdapter(
             listener.onItemClick(position, isSelected)
         }
     }
+
 
     fun setData(orders: List<Order>){
         data = orders

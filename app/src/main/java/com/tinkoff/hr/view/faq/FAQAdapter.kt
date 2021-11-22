@@ -15,7 +15,9 @@ import net.cachapa.expandablelayout.ExpandableLayout
 class FAQAdapter : RecyclerView.Adapter<FAQAdapter.ViewHolder>() {
     private var data: List<FAQ> = listOf()
 
+
     class ViewHolder(val binding: ItemFaqBinding) : RecyclerView.ViewHolder(binding.root)
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)

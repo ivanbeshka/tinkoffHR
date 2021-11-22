@@ -21,12 +21,15 @@ class FiltersAdapter(private val listener: OnFilterClickListener) : RecyclerView
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val filter = data[position]
+
         holder.binding.filter = filter
+
 
         holder.binding.chipFilter.setOnCheckedChangeListener { chip, isChecked ->
             listener.onFilterClick(isChecked, position)
         }
     }
+
 
     fun setData(filters: List<Filter>){
         data = filters
