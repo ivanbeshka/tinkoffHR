@@ -15,6 +15,10 @@ import com.tinkoff.hr.viewmodels.OrdersViewModel
 
 class OrdersFragment : Fragment(), OrdersAdapter.OnItemClickListener, FiltersAdapter.OnFilterClickListener {
 
+    private companion object {
+        const val SPAN_COUNT = 2
+    }
+
     private val filtersViewModel: FiltersViewModel by viewModels()
     private val ordersViewModel: OrdersViewModel by viewModels()
 
@@ -25,20 +29,16 @@ class OrdersFragment : Fragment(), OrdersAdapter.OnItemClickListener, FiltersAda
     ): View? {
         val binding = FragmentOrdersBinding.inflate(inflater, container, false)
 
-        binding.rvOrders.layoutManager = GridLayoutManager(requireContext(), 2)
+        binding.rvOrders.layoutManager = GridLayoutManager(requireContext(), SPAN_COUNT)
+        binding.rvOrders.adapter = OrdersAdapter(this)
 
         ordersViewModel.getOrders().observe(viewLifecycleOwner){
-            val ordersAdapter = OrdersAdapter(it, this)
-            binding.rvOrders.adapter = ordersAdapter
+            (binding.rvOrders.adapter as OrdersAdapter).setData(it)
         }
 
-
-        binding.rvFilters.layoutManager =
-            LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-
+        binding.rvFilters.adapter = FiltersAdapter(this)
         filtersViewModel.getFilters().observe(viewLifecycleOwner){
-            val filtersAdapter = FiltersAdapter(it, this)
-            binding.rvFilters.adapter = filtersAdapter
+            (binding.rvFilters.adapter as FiltersAdapter).setData(it)
         }
 
         return binding.root

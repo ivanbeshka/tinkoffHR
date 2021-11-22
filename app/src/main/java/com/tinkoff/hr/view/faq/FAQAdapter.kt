@@ -12,24 +12,21 @@ import com.tinkoff.hr.data.FAQ
 import com.tinkoff.hr.databinding.ItemFaqBinding
 import net.cachapa.expandablelayout.ExpandableLayout
 
-class FAQAdapter(private val data: List<FAQ>) : RecyclerView.Adapter<FAQAdapter.ViewHolder>() {
+class FAQAdapter : RecyclerView.Adapter<FAQAdapter.ViewHolder>() {
+    private var data: List<FAQ> = listOf()
 
-    class ViewHolder(val binding: ItemFaqBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(faq: FAQ){
-            binding.faq = faq
-        }
-    }
+    class ViewHolder(val binding: ItemFaqBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding: ItemFaqBinding = DataBindingUtil.inflate(inflater, R.layout.item_faq, parent, false)
+        val binding = ItemFaqBinding.inflate(inflater, parent, false)
         return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val faq = data[position]
 
-        holder.bind(faq)
+        holder.binding.faq = faq
 
         holder.binding.btnOpenCloseDesc.setOnClickListener {
             val isExpanded = holder.binding.layoutExpandable.isExpanded
@@ -42,6 +39,11 @@ class FAQAdapter(private val data: List<FAQ>) : RecyclerView.Adapter<FAQAdapter.
                 holder.binding.btnOpenCloseDesc.setImageResource(R.drawable.ic_arrow_up)
             }
         }
+    }
+
+    fun setData(faqs: List<FAQ>){
+        data = faqs
+        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {

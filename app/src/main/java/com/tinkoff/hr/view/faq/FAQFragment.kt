@@ -26,9 +26,8 @@ class FAQFragment : Fragment() {
                     "Если есть клиника, в которую ты ходишь, но ее нет в переченье, то пиши сюда tcr_dms@tinkoff.ru;"
         )
 
-        binding.rvFaq.adapter = FAQAdapter(
-            listOf(faq, faq, faq, faq, faq, faq, faq, faq, faq, faq, faq)
-        )
+        binding.rvFaq.adapter = FAQAdapter()
+        (binding.rvFaq.adapter as FAQAdapter).setData(listOf(faq))
 
         return binding.root
     }
