@@ -26,20 +26,24 @@ class FiltersViewModel : ViewModel() {
     fun setFilterIsSelected(isSelected: Boolean, position: Int) {
         val mFilters = filters.value!!.map { it.copy() }
 
-        if (isSelected && position == 0){
+        if (isSelected && position == FILTER_ALL_POSITION){
             for (i in 1 until mFilters.size) {
                 mFilters[i].isSelected = false
             }
-            mFilters[0].isSelected = isSelected
+            mFilters[FILTER_ALL_POSITION].isSelected = isSelected
         } else {
-            mFilters[0].isSelected = false
+            mFilters[FILTER_ALL_POSITION].isSelected = false
             mFilters[position].isSelected = isSelected
 
             if (mFilters.all { !it.isSelected }){
-                mFilters[0].isSelected = true
+                mFilters[FILTER_ALL_POSITION].isSelected = true
             }
         }
 
         filters.value = mFilters
+    }
+
+    private companion object {
+        const val FILTER_ALL_POSITION = 0
     }
 }
