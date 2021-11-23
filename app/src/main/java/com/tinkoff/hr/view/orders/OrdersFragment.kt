@@ -30,11 +30,13 @@ class OrdersFragment : Fragment(), OrdersAdapter.OnItemClickListener, FiltersAda
 
         binding.rvOrders.layoutManager = GridLayoutManager(requireContext(), SPAN_COUNT)
         binding.rvOrders.adapter = ordersAdapter
+        binding.rvOrders.itemAnimator = null
         ordersViewModel.getOrders().observe(viewLifecycleOwner){
             ordersAdapter.setData(it)
         }
 
         binding.rvFilters.adapter = filtersAdapter
+        binding.rvFilters.itemAnimator = null
         filtersViewModel.getFilters().observe(viewLifecycleOwner){
             filtersAdapter.setData(it)
             ordersViewModel.setFilters(it)
