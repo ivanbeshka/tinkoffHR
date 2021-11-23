@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import com.tinkoff.hr.databinding.FragmentOrdersBinding
 import com.tinkoff.hr.viewmodels.FiltersViewModel

@@ -1,6 +1,5 @@
 package com.tinkoff.hr.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -25,9 +24,7 @@ class FiltersViewModel : ViewModel() {
     }
 
     fun setFilterIsSelected(isSelected: Boolean, position: Int) {
-        val mFilters = filters.value!!
-
-
+        val mFilters = filters.value!!.map { it.copy() }
 
         if (isSelected && position == 0){
             for (i in 1 until mFilters.size) {

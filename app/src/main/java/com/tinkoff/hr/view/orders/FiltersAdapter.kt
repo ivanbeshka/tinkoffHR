@@ -1,8 +1,9 @@
 package com.tinkoff.hr.view.orders
 
-import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.tinkoff.hr.data.Filter
 import com.tinkoff.hr.databinding.ItemOrdersFilterBinding
@@ -23,25 +24,54 @@ class FiltersAdapter(private val listener: OnFilterClickListener) : RecyclerView
         val filter = data[position]
 
         holder.binding.filter = filter
+        val isSelected = filter.isSelected
 
         holder.binding.chipFilter.setOnClickListener {
-            val isSelected = !data[position].isSelected
-            data[position].isSelected = isSelected
-            listener.onFilterClick(isSelected, position)
+            listener.onFilterClick(!isSelected, position)
         }
     }
 
-
-    fun setData(filters: List<Filter>){
-        data = filters
-        notifyDataSetChanged()
+    fun setData(filters: List<Filter>) {
+        if (data.isEmpty()) {
+            data = filters
+            notifyDataSetChanged()
+        } else {
+            val callback = FiltersDiffUtilCallback(data, filters)
+            val util = DiffUtil.calculateDiff(callback)
+            data = filters
+            util.dispatchUpdatesTo(this)
+        }
     }
 
     override fun getItemCount(): Int {
         return data.size
     }
 
-    interface OnFilterClickListener{
+    interface OnFilterClickListener {
         fun onFilterClick(isSelected: Boolean, position: Int)
+    }
+
+    class FiltersDiffUtilCallback(
+        private val oldFilters: List<Filter>,
+        private val newFilters: List<Filter>
+    ) : DiffUtil.Callback() {
+        override fun getOldListSize(): Int {
+            return oldFilters.size
+        }
+
+        override fun getNewListSize(): Int {
+            return newFilters.size
+        }
+
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldFilters[oldItemPosition].name == newFilters[newItemPosition].name
+        }
+
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            val oldFilter = oldFilters[oldItemPosition]
+            val newFilter = newFilters[newItemPosition]
+            return oldFilter.isSelected == newFilter.isSelected
+        }
+
     }
 }
