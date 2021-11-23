@@ -25,6 +25,7 @@ class FragmentContentContainer : Fragment() {
         binding.bottomNav.setupWithNavController(
             listOf(
                 R.navigation.nav_graph_orders,
+                R.navigation.nav_graph_map,
                 R.navigation.nav_graph_employees,
                 R.navigation.nav_graph_faq
             ), childFragmentManager, R.id.nav_host_fragment_content,
