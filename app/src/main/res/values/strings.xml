@@ -10,4 +10,5 @@
     <string name="employees">Сотрудники</string>
     <string name="orders">Заказы</string>
     <string name="clinics">Клиники по ДМС</string>
+    <string name="map">Карта</string>
 </resources>
