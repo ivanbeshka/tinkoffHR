@@ -24,26 +24,27 @@ class FiltersViewModel : ViewModel() {
     }
 
     fun setFilterIsSelected(isSelected: Boolean, position: Int) {
-        val mFilters = filters.value!!.map { it.copy() }
+        val filters = filters.value!!.map { it.copy() }
 
         if (isSelected && position == FILTER_ALL_POSITION){
-            for (i in 1 until mFilters.size) {
-                mFilters[i].isSelected = false
+            for (i in 1 until filters.size) {
+                filters[i].isSelected = false
             }
-            mFilters[FILTER_ALL_POSITION].isSelected = isSelected
+            filters[FILTER_ALL_POSITION].isSelected = isSelected
         } else {
-            mFilters[FILTER_ALL_POSITION].isSelected = false
-            mFilters[position].isSelected = isSelected
+            filters[FILTER_ALL_POSITION].isSelected = false
+            filters[position].isSelected = isSelected
 
-            if (mFilters.all { !it.isSelected }){
-                mFilters[FILTER_ALL_POSITION].isSelected = true
+            if (filters.all { !it.isSelected }){
+                filters[FILTER_ALL_POSITION].isSelected = true
             }
         }
 
-        filters.value = mFilters
+        this.filters.value = filters
     }
 
-    private companion object {
+    companion object {
         const val FILTER_ALL_POSITION = 0
+        const val FILTER_ALL_NAME = "Всё"
     }
 }

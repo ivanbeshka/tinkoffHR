@@ -1,6 +1,5 @@
 package com.tinkoff.hr.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -33,17 +32,14 @@ class OrdersViewModel : ViewModel() {
     }
 
     fun setFilters(filters: List<Filter>) {
-        val filteredOrders = mutableSetOf<Order>()
-        val selectedFilters = filters.filter { it.isSelected }
+        val selectedFilters = filters.filter { it.isSelected }.map { it.name }
 
-        if (selectedFilters.map { it.name }.contains("Всё")) {
+        if (selectedFilters.contains(FiltersViewModel.FILTER_ALL_NAME)) {
             orders.value = getOrders
         } else {
-            getOrders.forEach { order ->
-                selectedFilters.forEach { filter ->
-                    if (order.filters.contains(filter.name)) {
-                        filteredOrders.add(order)
-                    }
+            val filteredOrders = getOrders.filter { order ->
+                order.categories.any { category ->
+                    selectedFilters.contains(category)
                 }
             }
 

@@ -5,7 +5,7 @@ data class Order(
     val article: String,
     val name: String,
     val count: Int,
-    val filters: List<String>,
+    val categories: List<String>,
     var selected: Boolean = false,
     val photoUrl: String? = null
 )

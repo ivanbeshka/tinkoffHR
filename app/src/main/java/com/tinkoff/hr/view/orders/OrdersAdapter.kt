@@ -1,10 +1,8 @@
 package com.tinkoff.hr.view.orders
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import com.tinkoff.hr.R
@@ -53,7 +51,7 @@ class OrdersAdapter(
 
     private fun setRightCardBackground(v: MaterialCardView, selected: Boolean){
         if (!selected) {
-            v.elevation = 10f
+            v.elevation = ELEVATION_NORMAL
             v.setCardBackgroundColor(
                 ContextCompat.getColor(
                     v.context,
@@ -61,7 +59,7 @@ class OrdersAdapter(
                 )
             )
         } else {
-            v.elevation = 7f
+            v.elevation = ELEVATION_PRESSED
             v.setCardBackgroundColor(
                 ContextCompat.getColor(
                     v.context,
@@ -77,5 +75,10 @@ class OrdersAdapter(
 
     interface OnItemClickListener {
         fun onItemClick(position: Int, isSelected: Boolean)
+    }
+
+    private companion object {
+        const val ELEVATION_PRESSED = 7f
+        const val ELEVATION_NORMAL = 10f
     }
 }
