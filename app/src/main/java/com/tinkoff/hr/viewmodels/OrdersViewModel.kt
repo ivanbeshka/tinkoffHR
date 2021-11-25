@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.tinkoff.hr.data.Filter
+import com.tinkoff.hr.data.Filter.Companion.FILTER_ALL_NAME
 import com.tinkoff.hr.data.Order
 
 class OrdersViewModel : ViewModel() {
@@ -34,7 +35,7 @@ class OrdersViewModel : ViewModel() {
     fun setFilters(filters: List<Filter>) {
         val selectedFilters = filters.filter { it.isSelected }.map { it.name }
 
-        if (selectedFilters.contains(FiltersViewModel.FILTER_ALL_NAME)) {
+        if (selectedFilters.contains(FILTER_ALL_NAME)) {
             orders.value = getOrders
         } else {
             val filteredOrders = getOrders.filter { order ->

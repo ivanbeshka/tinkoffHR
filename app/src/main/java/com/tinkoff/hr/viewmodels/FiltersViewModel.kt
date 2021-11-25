@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.tinkoff.hr.data.Filter
+import com.tinkoff.hr.data.Filter.Companion.FILTER_ALL_POSITION
 
 class FiltersViewModel : ViewModel() {
     private val filters: MutableLiveData<List<Filter>> by lazy {
@@ -24,7 +25,7 @@ class FiltersViewModel : ViewModel() {
     }
 
     fun setFilterIsSelected(isSelected: Boolean, position: Int) {
-        val filters = filters.value!!.map { it.copy() }
+        val filters = this.filters.value!!.map { it.copy() }
 
         if (isSelected && position == FILTER_ALL_POSITION){
             for (i in 1 until filters.size) {
@@ -43,8 +44,4 @@ class FiltersViewModel : ViewModel() {
         this.filters.value = filters
     }
 
-    companion object {
-        const val FILTER_ALL_POSITION = 0
-        const val FILTER_ALL_NAME = "Всё"
-    }
 }
