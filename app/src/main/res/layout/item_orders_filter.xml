@@ -17,7 +17,7 @@
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="@{filter.checked}"
+            android:checked="@{filter.selected}"
             android:text="@{filter.name}"
             android:layout_margin="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
