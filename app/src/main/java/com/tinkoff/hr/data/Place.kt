@@ -4,7 +4,7 @@ import com.google.android.gms.maps.model.LatLng
 
 data class Place(
     val name: String,
-    val lunch: Boolean,
+    val lunch: String,
     val averagePrice: String,
     val pluses: String,
     val minuses: String,

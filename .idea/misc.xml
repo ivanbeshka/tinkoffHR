@@ -5,17 +5,19 @@
       <map>
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/drawable/corner_radius.xml" value="0.2911458333333333" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/drawable/ic_email.xml" value="0.2911458333333333" />
+        <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/drawable/shape_place_values.xml" value="0.2675925925925926" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/activity_main.xml" value="0.275" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/fragment_clinics_head.xml" value="0.25" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/fragment_content_container.xml" value="0.275" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/fragment_employee_desc.xml" value="0.36" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/fragment_employees.xml" value="0.275" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/fragment_faq.xml" value="0.275" />
-        <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/fragment_map.xml" value="0.2" />
+        <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/fragment_map.xml" value="0.3" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/fragment_orders.xml" value="0.275" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/fragment_register.xml" value="0.2" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/fragment_register_code.xml" value="0.275" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/fragment_register_container.xml" value="0.275" />
+        <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/item_autocomplete_place.xml" value="0.27076923076923076" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/item_employee.xml" value="0.275" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/item_faq.xml" value="0.275" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/item_order.xml" value="0.3" />
