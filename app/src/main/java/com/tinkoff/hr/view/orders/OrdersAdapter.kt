@@ -65,7 +65,7 @@ class OrdersAdapter(
             v.setCardBackgroundColor(
                 ContextCompat.getColor(
                     v.context,
-                    R.color.gray
+                    R.color.pressed_view
                 )
             )
         }

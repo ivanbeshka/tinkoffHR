@@ -20,10 +20,6 @@ class PlacesAdapter(
 
     private val filteredData = mutableListOf<Place>()
 
-    init {
-        filteredData.addAll(data.map { it.copy() })
-    }
-
     override fun getCount(): Int {
         return filteredData.size
     }
@@ -33,10 +29,10 @@ class PlacesAdapter(
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        val inflater = LayoutInflater.from(context)
+        val binding = ItemAutocompletePlaceBinding.inflate(inflater, parent, false)
+
         val place = filteredData[position]
-        val inflater = LayoutInflater.from(parent.context)
-        val binding =
-            ItemAutocompletePlaceBinding.inflate(inflater, parent, false)
         binding.place = place
 
         return binding.root
@@ -46,11 +42,8 @@ class PlacesAdapter(
         filteredData.clear()
         filteredData.addAll(places)
         notifyDataSetChanged()
-        if (places.isNotEmpty()) {
-            listener.onPlacesShow(true)
-        } else {
-            listener.onPlacesShow(false)
-        }
+
+        listener.onPlacesShow(places.isNotEmpty())
     }
 
     private class PlacesFilter(

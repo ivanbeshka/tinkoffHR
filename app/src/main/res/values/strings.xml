@@ -12,4 +12,9 @@
     <string name="clinics">Клиники по ДМС</string>
     <string name="map">Карта</string>
     <string name="find_place">Найдите место</string>
+    <string name="average_price">Средний чек</string>
+    <string name="lunch">Бизнес-ланч</string>
+    <string name="rating">Рейтинг</string>
+    <string name="name">Название</string>
+    <string name="input_place">Введите место</string>
 </resources>

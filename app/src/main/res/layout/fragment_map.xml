@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,84 +22,103 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            app:cardElevation="32dp"
+            app:cardElevation="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/autocomplete_place"
+                android:id="@+id/til_autocomplete"
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:elevation="16dp"
-                android:hint="Введите место"
+                android:hint="@string/input_place"
                 app:boxBackgroundColor="@color/white"
                 app:boxStrokeColor="@color/transparent"
                 app:boxStrokeWidth="0dp"
                 app:endIconMode="clear_text">
                 <AutoCompleteTextView
+                    android:id="@+id/autocomplete_place"
+                    android:completionThreshold="0"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textCapSentences"
-                    android:dropDownAnchor="@id/layout_place_values" />
+                    android:dropDownAnchor="@id/autocomplete_anchor" />
             </com.google.android.material.textfield.TextInputLayout>
         </com.google.android.material.card.MaterialCardView>
+
+        <View
+            android:id="@+id/autocomplete_anchor"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="-1dp"
+            app:layout_constraintEnd_toEndOf="@+id/layout_place_values"
+            app:layout_constraintStart_toStartOf="@+id/layout_place_values"
+            app:layout_constraintTop_toBottomOf="@+id/layout_place_values" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_place_values"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/shape_place_values"
-            android:elevation="32dp"
+            android:elevation="16dp"
+            android:layout_marginTop="3dp"
             android:visibility="gone"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginHorizontal="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/materialCardView">
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/gray"
+                android:layout_marginBottom="1dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:text="Название"
+                android:text="@string/name"
                 android:textSize="10sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/tv_rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:text="Рейтинг"
+                android:text="@string/rating"
                 android:textSize="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/tv_average_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="14dp"
-                android:text="Средний чек"
+                android:text="@string/average_price"
                 android:textSize="10sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textView5"
+                app:layout_constraintEnd_toStartOf="@+id/tv_rating"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Бизнес-ланч"
+                android:text="@string/lunch"
                 android:textSize="10sp"
                 android:layout_marginEnd="14dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textView6"
+                app:layout_constraintEnd_toStartOf="@+id/tv_average_price"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

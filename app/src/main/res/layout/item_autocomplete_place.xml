@@ -9,7 +9,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="50dp">
 
         <TextView
             android:id="@+id/tv_place_name"
@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:text="@{place.name}"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_place_lunch"
