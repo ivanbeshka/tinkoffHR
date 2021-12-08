@@ -14,7 +14,7 @@ import java.util.*
 
 class PlacesAdapter(
     context: Context,
-    private val data: List<Place>,
+    private val data: MutableList<Place>,
     private val listener: PlacesAutocompleteListener
 ) : ArrayAdapter<Place>(context, R.layout.item_autocomplete_place, data) {
 
@@ -35,7 +35,16 @@ class PlacesAdapter(
         val place = filteredData[position]
         binding.place = place
 
+        binding.layout.setOnClickListener {
+            listener.onPlaceClick(place)
+        }
+
         return binding.root
+    }
+
+    fun setData(places: List<Place>){
+        clear()
+        addAll(places)
     }
 
     private fun setFilteredResults(places: List<Place>) {
@@ -50,21 +59,17 @@ class PlacesAdapter(
         private val adapter: PlacesAdapter,
         private val originalData: List<Place>
     ) : Filter() {
-        val filteredData = mutableListOf<Place>()
 
         override fun performFiltering(constraint: CharSequence?): FilterResults {
-            filteredData.clear()
             val results = FilterResults()
-            if (constraint == null || constraint.isEmpty()) {
-                filteredData.addAll(originalData)
+
+            val filteredData = if (constraint.isNullOrEmpty()) {
+                originalData
             } else {
-                val filterPattern = constraint.toString().lowercase(Locale.getDefault()).trim()
-                for (place in originalData) {
-                    if (place.name.lowercase(Locale.getDefault()).contains(filterPattern)) {
-                        filteredData.add(place)
-                    }
-                }
+                val filterPattern = constraint.toString().trim().lowercase(Locale.getDefault())
+                originalData.filter { it.name.lowercase(Locale.getDefault()).contains(filterPattern) }
             }
+
             results.values = filteredData
             results.count = filteredData.size
             return results

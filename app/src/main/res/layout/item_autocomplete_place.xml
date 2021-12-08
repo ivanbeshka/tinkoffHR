@@ -8,6 +8,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="50dp">
 
@@ -32,11 +33,11 @@
             android:layout_marginEnd="8dp"
             android:gravity="center"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tv_palace_avr_price"
+            app:layout_constraintEnd_toStartOf="@+id/tv_place_avr_price"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_palace_avr_price"
+            android:id="@+id/tv_place_avr_price"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:gravity="center"

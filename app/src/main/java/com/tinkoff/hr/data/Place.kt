@@ -6,9 +6,7 @@ data class Place(
     val name: String,
     val lunch: String,
     val averagePrice: String,
-    val pluses: String,
-    val minuses: String,
-    val hair: String,
     val rating: String,
-    val latLng: LatLng
+    val latLng: LatLng,
+    val reviews: List<PlaceReview>
 )
