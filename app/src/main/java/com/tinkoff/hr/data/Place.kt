@@ -8,5 +8,6 @@ data class Place(
     val averagePrice: String,
     val rating: String,
     val latLng: LatLng,
+    val address: String,
     val reviews: List<PlaceReview>
 )

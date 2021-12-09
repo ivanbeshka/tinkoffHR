@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="81dp">
 
         <TextView
             android:id="@+id/tv_place_name"
@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:text="@{place.name}"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_place_lunch"
@@ -29,10 +29,10 @@
             android:id="@+id/tv_place_lunch"
             android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:text="@{place.lunch}"
             android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
             android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@{place.lunch}"
             app:layout_constraintEnd_toStartOf="@+id/tv_place_avr_price"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -40,10 +40,10 @@
             android:id="@+id/tv_place_avr_price"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
             android:text="@{place.averagePrice}"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tv_place_rating"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -52,12 +52,44 @@
             android:layout_width="20dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:text="@{place.rating}"
             android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="8dp"
+            android:text="@{place.rating}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <View
+            android:id="@+id/view"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:background="@color/gray"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_place_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_place_avr_price" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="15dp"
+            android:text="@{place.address}"
+            android:textSize="12sp"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/view"
+            app:layout_constraintStart_toStartOf="@+id/view"
+            app:layout_constraintTop_toBottomOf="@id/view" />
+
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="0dp"
+            android:layout_height="0.5dp"
+            android:background="@color/gray"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

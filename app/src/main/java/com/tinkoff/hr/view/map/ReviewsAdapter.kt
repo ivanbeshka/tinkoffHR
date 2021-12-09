@@ -25,6 +25,4 @@ class ReviewsAdapter(private val data: List<PlaceReview>) : RecyclerView.Adapter
     override fun getItemCount(): Int {
         return data.size
     }
-
-
 }

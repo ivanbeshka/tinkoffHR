@@ -161,6 +161,7 @@ class PlacesViewModel : ViewModel() {
                     "200р",
                     "10",
                     LatLng(56.833826, 60.595112),
+                    "ул. Малышева, 29, Екатеринбург",
                     reviews
                 ),
                 Place(
@@ -169,6 +170,7 @@ class PlacesViewModel : ViewModel() {
                     "200р",
                     "9",
                     LatLng(56.840183, 60.593243),
+                    "ул. Антона Валека, 12, Екатеринбург",
                     reviews
                 ),
                 Place(
@@ -177,6 +179,7 @@ class PlacesViewModel : ViewModel() {
                     "250-300р",
                     "4",
                     LatLng(56.836573, 60.594536),
+                    "просп. Ленина, 32г, Екатеринбург",
                     reviews
                 ),
                 Place(
@@ -185,6 +188,7 @@ class PlacesViewModel : ViewModel() {
                     "350р",
                     "7,5",
                     LatLng(56.833512, 60.593203),
+                    "ул. Малышева, 25, Екатеринбург",
                     reviews
                 ),
                 Place(
@@ -193,6 +197,7 @@ class PlacesViewModel : ViewModel() {
                     "300р",
                     "8",
                     LatLng(56.827993, 60.598362),
+                    "где-то в Гринвиче",
                     reviews
                 ),
             )

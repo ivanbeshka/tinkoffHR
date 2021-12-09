@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="7dp"
             android:layout_marginBottom="21dp"
-            android:background="@color/review_background"
+            android:background="@drawable/shape_review_body"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
