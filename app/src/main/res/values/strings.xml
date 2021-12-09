@@ -18,4 +18,5 @@
     <string name="name">Название</string>
     <string name="input_place">Введите место</string>
     <string name="reviews">Отзывы</string>
+    <string name="create_review">Оставить отзыв</string>
 </resources>
