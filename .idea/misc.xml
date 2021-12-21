@@ -4,19 +4,26 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/drawable/corner_radius.xml" value="0.2911458333333333" />
+        <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/drawable/ic_arrow_back.xml" value="0.2866666666666667" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/drawable/ic_create.xml" value="0.2866666666666667" />
+        <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/drawable/ic_done_all.xml" value="0.28055555555555556" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/drawable/ic_email.xml" value="0.2911458333333333" />
+        <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/drawable/selector_grade.xml" value="0.2866666666666667" />
+        <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/drawable/selector_til_create_review_box_stroke.xml" value="0.2866666666666667" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/drawable/shape_bottom_sheet.xml" value="0.2675925925925926" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/drawable/shape_bottom_sheet_drag.xml" value="0.2866666666666667" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/drawable/shape_btn_create_review.xml" value="0.2866666666666667" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/drawable/shape_place_values.xml" value="0.2675925925925926" />
+        <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/drawable/shape_pressed_grade.xml" value="0.2866666666666667" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/drawable/shape_review_body.xml" value="0.2866666666666667" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/drawable/shape_review_headers.xml" value="0.2866666666666667" />
+        <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/drawable/shape_unpressed_grade.xml" value="0.2866666666666667" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/activity_main.xml" value="0.275" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/bottom_sheet_place.xml" value="0.3" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/fragment_clinics_head.xml" value="0.25" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/fragment_content_container.xml" value="0.275" />
-        <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/fragment_employee_desc.xml" value="0.36" />
+        <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/fragment_create_review.xml" value="0.268" />
+        <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/fragment_employee_desc.xml" value="0.268" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/fragment_employees.xml" value="0.275" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/fragment_faq.xml" value="0.275" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/fragment_map.xml" value="0.4" />
@@ -31,6 +38,7 @@
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/item_order_filter.xml" value="0.275" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/item_orders_filter.xml" value="0.275" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/item_place_review.xml" value="0.3" />
+        <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/layout/view_grade.xml" value="0.2" />
         <entry key="..\:/AndroidStudioProjects/HR/app/src/main/res/menu/bottom_nav_menu.xml" value="0.275" />
       </map>
     </option>

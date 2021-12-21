@@ -26,4 +26,11 @@
     <style name="CustomBottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@android:color/transparent</item>
     </style>
+
+    <style name="TextInputLayoutCreateReview" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">@color/til_create_review_hint</item>
+        <item name="android:textColorHint">@color/til_create_review_hint</item>
+        <item name="hintTextColor">@color/til_create_review_hint</item>
+
+    </style>
 </resources>

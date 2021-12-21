@@ -16,6 +16,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.tinkoff.hr.R
 import com.tinkoff.hr.data.Place
 import com.tinkoff.hr.databinding.FragmentMapBinding
+import com.tinkoff.hr.view.map.place_description.PlaceBottomSheet
 import com.tinkoff.hr.viewmodels.PlacesViewModel
 
 class MapFragment : Fragment(), OnMapReadyCallback, PlacesAdapter.PlacesAutocompleteListener,

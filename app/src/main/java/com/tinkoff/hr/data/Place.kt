@@ -3,6 +3,7 @@ package com.tinkoff.hr.data
 import com.google.android.gms.maps.model.LatLng
 
 data class Place(
+    val id: Int,
     val name: String,
     val lunch: String,
     val averagePrice: String,
