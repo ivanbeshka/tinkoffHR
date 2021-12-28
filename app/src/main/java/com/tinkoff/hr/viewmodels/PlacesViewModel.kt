@@ -156,6 +156,7 @@ class PlacesViewModel : ViewModel() {
         MutableLiveData<List<Place>>().also {
             it.value = listOf(
                 Place(
+                    1,
                     "А ты где",
                     "да",
                     "200р",
@@ -165,6 +166,7 @@ class PlacesViewModel : ViewModel() {
                     reviews
                 ),
                 Place(
+                    2,
                     "Барашка на гранате",
                     "да",
                     "200р",
@@ -174,6 +176,7 @@ class PlacesViewModel : ViewModel() {
                     reviews
                 ),
                 Place(
+                    3,
                     "Бухара",
                     "нет",
                     "250-300р",
@@ -183,6 +186,7 @@ class PlacesViewModel : ViewModel() {
                     reviews
                 ),
                 Place(
+                    4,
                     "Рататуй",
                     "да",
                     "350р",
@@ -192,6 +196,7 @@ class PlacesViewModel : ViewModel() {
                     reviews
                 ),
                 Place(
+                    5,
                     "Friends",
                     "да",
                     "300р",
@@ -204,5 +209,22 @@ class PlacesViewModel : ViewModel() {
         }
     }
 
+    private val place: MutableLiveData<Place> by lazy {
+        MutableLiveData<Place>().also {
+            it.value = Place(
+                1,
+                "А ты где",
+                "да",
+                "200р",
+                "10",
+                LatLng(56.833826, 60.595112),
+                "ул. Малышева, 29, Екатеринбург",
+                reviews
+            )
+        }
+    }
+
     fun getPlaces(): LiveData<List<Place>> = places
+
+    fun getPlaceById(placeId: Int): LiveData<Place> = place
 }

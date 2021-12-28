@@ -19,4 +19,16 @@
     <string name="input_place">Введите место</string>
     <string name="reviews">Отзывы</string>
     <string name="create_review">Оставить отзыв</string>
+    <string name="review">Отзыв</string>
+    <string name="price_hint">Сумма</string>
+    <string name="pluses">Плюсы:</string>
+    <string name="what_did_you_like">Что вам понравилось?</string>
+    <string name="minuses">Минусы:</string>
+    <string name="what_did_you_dislike">Что вам не понравилось?</string>
+    <string name="review_two_dots">Отзыв:</string>
+    <string name="review_your_impression">Опишите ваше общее впечатление</string>
+    <string name="grade">Оценка:</string>
+    <string name="grade_for_this_place">Какую оченку вы хотели бы поставить этому\nзаведению?</string>
+    <string name="check">Чек:</string>
+    <string name="send">Отправить</string>
 </resources>

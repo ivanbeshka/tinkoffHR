@@ -9,5 +9,19 @@
         android:id="@+id/fragmentMap"
         android:name="com.tinkoff.hr.view.map.MapFragment"
         android:label="FragmentMap"
-        tools:layout="@layout/fragment_map"/>
+        tools:layout="@layout/fragment_map">
+        <action
+            android:id="@+id/action_fragmentMap_to_createReviewFragment"
+            app:destination="@id/createReviewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createReviewFragment"
+        android:name="com.tinkoff.hr.view.map.place_description.CreateReviewFragment"
+        android:label="CreateReviewFragment"
+        tools:layout="@layout/fragment_create_review">
+        <argument
+            android:name="placeId"
+            app:argType="integer"
+            app:nullable="false"/>
+    </fragment>
 </navigation>

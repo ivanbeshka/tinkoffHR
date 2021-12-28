@@ -1,6 +1,5 @@
-package com.tinkoff.hr.view.map
+package com.tinkoff.hr.view.map.place_description
 
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
