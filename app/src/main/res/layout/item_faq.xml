@@ -17,7 +17,7 @@
             android:layout_height="match_parent"
             android:layout_margin="8dp"
             app:cardCornerRadius="16dp"
-            app:cardBackgroundColor="@color/gray"
+            app:cardBackgroundColor="@color/faq_color"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -56,7 +56,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="8dp"
                         android:gravity="center"
-                        android:text="@{faq.content}"/>
+                        android:text="@{faq.content}" />
                 </net.cachapa.expandablelayout.ExpandableLayout>
 
                 <androidx.appcompat.widget.AppCompatImageButton

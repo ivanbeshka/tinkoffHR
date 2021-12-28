@@ -30,21 +30,12 @@ class CustomGradeView @JvmOverloads constructor(
         view.setOnClickListener {
             rating = index + 1
             views.subList(0, index + 1).forEach {
-                setViewSelected(it)
+                it.isSelected = true
             }
 
             views.subList(index + 1, views.size).forEach {
-                setViewUnselected(it)
-
+                it.isSelected = false
             }
         }
-    }
-
-    private fun setViewSelected(view: View) {
-        view.setBackgroundResource(R.drawable.shape_pressed_grade)
-    }
-
-    private fun setViewUnselected(view: View) {
-        view.setBackgroundResource(R.drawable.shape_unpressed_grade)
     }
 }

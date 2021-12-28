@@ -18,7 +18,7 @@
     <color name="create_review_additional_text">#A5A4A4</color>
     <color name="unpressed_grade">#888888</color>
     <color name="btn_send_background">#FFC739</color>
-
+    <color name="faq_color">#C5C5C5</color>
 
     <color name="mtrl_textinput_default_box_stroke_color">#9C9C9C</color>
 </resources>
