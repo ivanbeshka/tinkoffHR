@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity(){
 
     private lateinit var navController: NavController
 
-    private var isLogin = true //todo
+    private var isLogin = false //todo
     private var isPressedBack = false
 
     override fun onCreate(savedInstanceState: Bundle?) {

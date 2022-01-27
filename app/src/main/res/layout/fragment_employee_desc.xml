@@ -11,7 +11,8 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/cream">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -23,7 +24,9 @@
                 android:layout_height="100dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:src="@mipmap/ic_launcher"
+                android:src="@drawable/ic_avatar_desc"
+                android:scaleType="center"
+                android:background="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearance="@style/circleImageView" />
@@ -35,6 +38,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginTop="16dp"
+                android:textColor="@color/black"
                 android:text="@{employee.fio}"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -143,6 +147,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:hint="Статус"
+                app:endIconTint="@color/black"
                 app:endIconDrawable="@drawable/ic_create"
                 app:endIconMode="custom"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -205,6 +210,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:hint="О себе"
+                app:endIconTint="@color/black"
                 app:endIconMode="custom"
                 app:endIconDrawable="@drawable/ic_create"
                 app:layout_constraintEnd_toEndOf="parent"

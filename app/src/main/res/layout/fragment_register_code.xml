@@ -4,13 +4,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/register_image">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/input_code"
             android:textSize="18sp"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toTopOf="@+id/et_code"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -34,13 +36,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:lineColor="@color/design_default_color_primary"
+            app:lineColor="@color/white"
+            app:cursorColor="@color/white"
+            android:textColor="@color/white"
             app:viewType="line" />
 
         <com.google.android.material.button.MaterialButton
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/BtnRegister"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
             android:text="@string/resend"
             app:icon="@drawable/ic_refresh"
             app:layout_constraintBottom_toBottomOf="parent"
