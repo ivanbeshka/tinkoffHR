@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="primary">#121212</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -19,6 +20,12 @@
     <color name="unpressed_grade">#888888</color>
     <color name="btn_send_background">#FFC739</color>
     <color name="faq_color">#C5C5C5</color>
+    <color name="register_button_background">#F0AF42</color>
+    <color name="cream">#FFE29E</color>
+   <color name="filter_unchecked_background">#BFBFBF</color>
+    <color name="background_black">#1B1A1A</color>
+    <color name="background_filters">#2C2B2B</color>
+    <color name="employee_email">#858484</color>
 
     <color name="mtrl_textinput_default_box_stroke_color">#9C9C9C</color>
 </resources>
