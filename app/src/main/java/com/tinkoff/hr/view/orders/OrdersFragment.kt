@@ -1,19 +1,17 @@
 package com.tinkoff.hr.view.orders
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import com.tinkoff.hr.databinding.FragmentOrdersBinding
 import com.tinkoff.hr.viewmodels.FiltersViewModel
 import com.tinkoff.hr.viewmodels.OrdersViewModel
 
-class OrdersFragment : Fragment(), OrdersAdapter.OnItemClickListener, FiltersAdapter.OnFilterClickListener {
+class OrdersFragment : Fragment(), OrdersAdapter.OnOrderClickListener, FiltersAdapter.OnFilterClickListener {
 
     private val filtersViewModel: FiltersViewModel by viewModels()
     private val ordersViewModel: OrdersViewModel by viewModels()
@@ -25,20 +23,20 @@ class OrdersFragment : Fragment(), OrdersAdapter.OnItemClickListener, FiltersAda
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentOrdersBinding.inflate(inflater, container, false)
 
         binding.rvOrders.layoutManager = GridLayoutManager(requireContext(), SPAN_COUNT)
         binding.rvOrders.adapter = ordersAdapter
         binding.rvOrders.itemAnimator = null
         ordersViewModel.getOrders().observe(viewLifecycleOwner){
-            ordersAdapter.setData(it)
+            ordersAdapter.data = it
         }
 
         binding.rvFilters.adapter = filtersAdapter
         binding.rvFilters.itemAnimator = null
         filtersViewModel.getFilters().observe(viewLifecycleOwner){
-            filtersAdapter.setData(it)
+            filtersAdapter.data = it
             ordersViewModel.setFilters(it)
         }
 
@@ -49,8 +47,8 @@ class OrdersFragment : Fragment(), OrdersAdapter.OnItemClickListener, FiltersAda
         filtersViewModel.setFilterIsSelected(isSelected, position)
     }
 
-    override fun onItemClick(position: Int, isSelected: Boolean) {
-        ordersViewModel.setIsSelected(position, isSelected)
+    override fun onItemClick(orderId: Int, isSelected: Boolean) {
+        ordersViewModel.setIsSelected(orderId, isSelected)
     }
 
     private companion object {

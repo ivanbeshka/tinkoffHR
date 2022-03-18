@@ -49,6 +49,7 @@
                     android:lines="4"
                     android:ellipsize="end"
                     android:text="@{order.name}"
+                    android:textColor="@color/black"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

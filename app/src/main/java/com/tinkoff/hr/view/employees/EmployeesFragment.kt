@@ -5,11 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.tinkoff.hr.data.Employee
 import com.tinkoff.hr.databinding.FragmentEmployeesBinding
+import com.tinkoff.hr.viewmodels.EmployeesViewModel
 
 class EmployeesFragment : Fragment(), EmployeesAdapter.OnItemClickListener {
+
+    private val employeesViewModel: EmployeesViewModel by activityViewModels()
 
     private val employeesAdapter = EmployeesAdapter(this)
 
@@ -17,18 +22,28 @@ class EmployeesFragment : Fragment(), EmployeesAdapter.OnItemClickListener {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentEmployeesBinding.inflate(inflater, container, false)
 
-        val employee = Employee("this_is_employee@gmail.com", "Иванов Александр Александрович")
+        employeesViewModel.getEmployees().observe(viewLifecycleOwner) {
+            binding.employee = it.first()
+            employeesAdapter.data = it
+        }
 
         binding.rvEmployees.adapter = employeesAdapter
-        employeesAdapter.setData(listOf(employee))
+
+        binding.containerMy.setOnClickListener {
+
+            binding.employee?.let { employee ->
+                onItemClick(employee)
+            }
+        }
 
         return binding.root
     }
 
-    override fun onItemClick(v: View, employeeEmail: String) {
-        findNavController().navigate(EmployeesFragmentDirections.actionEmployeesToEmployeeDescFragment(employeeEmail))
+    override fun onItemClick(employee: Employee) {
+        findNavController().navigate(EmployeesFragmentDirections.actionEmployeesToEmployeeDescFragment())
+        employeesViewModel.setCurrentEmployee(employee)
     }
 }

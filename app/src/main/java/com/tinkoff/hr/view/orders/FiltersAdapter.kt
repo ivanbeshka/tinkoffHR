@@ -1,15 +1,19 @@
 package com.tinkoff.hr.view.orders
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.tinkoff.hr.data.Filter
 import com.tinkoff.hr.databinding.ItemOrdersFilterBinding
 
 class FiltersAdapter(private val listener: OnFilterClickListener) : RecyclerView.Adapter<FiltersAdapter.ViewHolder>() {
-    private var data: List<Filter> = listOf()
+
+    private val differ = AsyncListDiffer(this, FiltersDiffUtilCallback())
+    var data: List<Filter>
+        get() = differ.currentList
+        set(value) = differ.submitList(value)
 
     class ViewHolder(val binding: ItemOrdersFilterBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -31,18 +35,6 @@ class FiltersAdapter(private val listener: OnFilterClickListener) : RecyclerView
         }
     }
 
-    fun setData(filters: List<Filter>) {
-        if (data.isEmpty()) {
-            data = filters
-            notifyDataSetChanged()
-        } else {
-            val callback = FiltersDiffUtilCallback(data, filters)
-            val util = DiffUtil.calculateDiff(callback)
-            data = filters
-            util.dispatchUpdatesTo(this)
-        }
-    }
-
     override fun getItemCount(): Int {
         return data.size
     }
@@ -51,27 +43,13 @@ class FiltersAdapter(private val listener: OnFilterClickListener) : RecyclerView
         fun onFilterClick(isSelected: Boolean, position: Int)
     }
 
-    class FiltersDiffUtilCallback(
-        private val oldFilters: List<Filter>,
-        private val newFilters: List<Filter>
-    ) : DiffUtil.Callback() {
-        override fun getOldListSize(): Int {
-            return oldFilters.size
+    class FiltersDiffUtilCallback : DiffUtil.ItemCallback<Filter>() {
+        override fun areItemsTheSame(oldItem: Filter, newItem: Filter): Boolean {
+            return oldItem.name == newItem.name
         }
 
-        override fun getNewListSize(): Int {
-            return newFilters.size
+        override fun areContentsTheSame(oldItem: Filter, newItem: Filter): Boolean {
+            return oldItem == newItem
         }
-
-        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-            return oldFilters[oldItemPosition].name == newFilters[newItemPosition].name
-        }
-
-        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-            val oldFilter = oldFilters[oldItemPosition]
-            val newFilter = newFilters[newItemPosition]
-            return oldFilter.isSelected == newFilter.isSelected
-        }
-
     }
 }

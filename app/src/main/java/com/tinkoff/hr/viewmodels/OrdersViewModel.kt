@@ -12,12 +12,12 @@ class OrdersViewModel : ViewModel() {
         Order(1, "", "Сушки FINE LIFE Малютка с маком, 350 г", 199, listOf("Бакалея")),
         Order(2, "", "Молоко, 350 мл", 199, listOf("Молочные продукты")),
         Order(3, "", "Печеньки, 350 г", 199, listOf("Печеньки", "Бакалея")),
-        Order(1, "", "Живой кофе Ирландский ликер зерно 1000 гр", 199, listOf("Кофе")),
-        Order(2, "", "Кофе в зернах Lavazza Crema e Aroma, 1 кг", 199, listOf("Кофе")),
-        Order(3, "", "Хлеб", 199, listOf("Выпечка")),
-        Order(1, "", "Тоже хлеб", 199, listOf("Выпечка")),
-        Order(2, "", "Сгущёнка", 199, listOf("Молочные продукты")),
-        Order(3, "", "Йогурт", 199, listOf("Молочные продукты"))
+        Order(4, "", "Живой кофе Ирландский ликер зерно 1000 гр", 199, listOf("Кофе")),
+        Order(5, "", "Кофе в зернах Lavazza Crema e Aroma, 1 кг", 199, listOf("Кофе")),
+        Order(6, "", "Хлеб", 199, listOf("Выпечка")),
+        Order(7, "", "Тоже хлеб", 199, listOf("Выпечка")),
+        Order(8, "", "Сгущёнка", 199, listOf("Молочные продукты")),
+        Order(9, "", "Йогурт", 199, listOf("Молочные продукты"))
     )
 
     private val orders: MutableLiveData<List<Order>> by lazy {
@@ -28,8 +28,8 @@ class OrdersViewModel : ViewModel() {
 
     fun getOrders(): LiveData<List<Order>> = orders
 
-    fun setIsSelected(position: Int, isSelected: Boolean) {
-        orders.value?.get(position)?.selected = isSelected
+    fun setIsSelected(orderId: Int, isSelected: Boolean) {
+        orders.value?.find { it.id == orderId }?.selected = isSelected
     }
 
     fun setFilters(filters: List<Filter>) {
