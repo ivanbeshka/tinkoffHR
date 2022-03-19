@@ -18,11 +18,6 @@
         android:id="@+id/employeeDescFragment"
         android:name="com.tinkoff.hr.view.employees.EmployeeDescFragment"
         android:label="EmployeeDescFragment"
-        tools:layout="@layout/fragment_employee_desc">
-        <argument
-            android:name="employeeEmail"
-            app:argType="string"
-            app:nullable="false"/>
-    </fragment>
+        tools:layout="@layout/fragment_employee_desc"/>
 
 </navigation>

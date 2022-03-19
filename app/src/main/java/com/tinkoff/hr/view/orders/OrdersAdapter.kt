@@ -3,6 +3,8 @@ package com.tinkoff.hr.view.orders
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import com.tinkoff.hr.R
@@ -10,10 +12,13 @@ import com.tinkoff.hr.data.Order
 import com.tinkoff.hr.databinding.ItemOrderBinding
 
 class OrdersAdapter(
-    private val listener: OnItemClickListener
+    private val listener: OnOrderClickListener
 ) : RecyclerView.Adapter<OrdersAdapter.ViewHolder>() {
 
-    private var data: List<Order> = listOf()
+    private val differ = AsyncListDiffer(this, OrderDiffUtilCallback())
+    var data: List<Order>
+        get() = differ.currentList
+        set(value) = differ.submitList(value)
 
     class ViewHolder(val binding: ItemOrderBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -39,17 +44,26 @@ class OrdersAdapter(
                 isSelected = true
                 setRightCardBackground(holder.binding.layoutOrder, true)
             }
-            listener.onItemClick(position, isSelected)
+            listener.onItemClick(order.id, isSelected)
         }
     }
 
-
-    fun setData(orders: List<Order>){
-        data = orders
-        notifyDataSetChanged()
+    override fun getItemCount(): Int {
+        return data.size
     }
 
-    private fun setRightCardBackground(v: MaterialCardView, selected: Boolean){
+    private class OrderDiffUtilCallback : DiffUtil.ItemCallback<Order>() {
+        override fun areItemsTheSame(oldItem: Order, newItem: Order): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: Order, newItem: Order): Boolean {
+            return oldItem == newItem
+        }
+
+    }
+
+    private fun setRightCardBackground(v: MaterialCardView, selected: Boolean) {
         if (!selected) {
             v.elevation = ELEVATION_NORMAL
             v.setCardBackgroundColor(
@@ -69,12 +83,8 @@ class OrdersAdapter(
         }
     }
 
-    override fun getItemCount(): Int {
-        return data.size
-    }
-
-    interface OnItemClickListener {
-        fun onItemClick(position: Int, isSelected: Boolean)
+    interface OnOrderClickListener {
+        fun onItemClick(orderId: Int, isSelected: Boolean)
     }
 
     private companion object {

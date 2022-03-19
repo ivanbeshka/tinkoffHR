@@ -31,4 +31,12 @@
     <string name="grade_for_this_place">Какую оченку вы хотели бы поставить этому\nзаведению?</string>
     <string name="check">Чек:</string>
     <string name="send">Отправить</string>
+    <string name="project">Проект</string>
+    <string name="about_me">О себе</string>
+    <string name="achieve">Ачивка</string>
+    <string name="status">Статус</string>
+    <string name="working_in_tinkoff_since">Работает в Тинькофф с</string>
+    <string name="birth_date">Дата рождения</string>
+    <string name="position_in_company">Позиция в компании</string>
+    <string name="table_num">Номер стола</string>
 </resources>

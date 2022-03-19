@@ -7,8 +7,17 @@
 
     <fragment
         android:id="@+id/faq"
-        android:name="com.tinkoff.hr.view.faq.FAQFragment"
+        android:name="com.tinkoff.hr.view.faq.FAQsFragment"
         android:label="FAQFragment"
-        tools:layout="@layout/fragment_faq"/>
+        tools:layout="@layout/fragment_faqs">
+        <action
+            android:id="@+id/action_faq_to_FAQDesc"
+            app:destination="@id/FAQDesc" />
+    </fragment>
+    <fragment
+        android:id="@+id/FAQDesc"
+        android:name="com.tinkoff.hr.view.faq.FAQDescFragment"
+        android:label="FAQDesc"
+        tools:layout="@layout/fragment_faq_desc"/>
 
 </navigation>
