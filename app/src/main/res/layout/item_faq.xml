@@ -24,7 +24,7 @@
             android:text="@{faq.title}"
             android:textColor="@color/black"
             android:layout_marginVertical="14dp"
-            android:layout_marginHorizontal="35dp"
+            android:layout_marginHorizontal="34dp"
             android:textSize="20sp"
             android:textStyle="bold"
             android:gravity="center"

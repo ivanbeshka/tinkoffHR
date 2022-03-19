@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/FAQDesc"
-        android:name="com.tinkoff.hr.view.faq.FAQDesc"
+        android:name="com.tinkoff.hr.view.faq.FAQDescFragment"
         android:label="FAQDesc"
         tools:layout="@layout/fragment_faq_desc"/>
 

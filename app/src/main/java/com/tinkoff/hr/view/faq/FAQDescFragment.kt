@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.tinkoff.hr.databinding.FragmentFaqDescBinding
 import com.tinkoff.hr.viewmodels.FAQViewModel
 
-class FAQDesc : Fragment() {
+class FAQDescFragment : Fragment() {
 
     private val faqViewModel: FAQViewModel by activityViewModels()
 
