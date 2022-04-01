@@ -38,6 +38,11 @@ class EmployeeDescFragment : Fragment() {
             findNavController().popBackStack()
         }
 
+        binding.ivAvatar.setOnLongClickListener {
+            AvatarActionDialog().show(childFragmentManager, AvatarActionDialog.TAG)
+            return@setOnLongClickListener true
+        }
+
         return binding.root
     }
 
