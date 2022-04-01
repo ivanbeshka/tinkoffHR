@@ -1,7 +1,5 @@
 package com.tinkoff.hr.data
 
-import java.util.*
-
 data class Employee(
     val email: String,
     val fio: String,
@@ -14,4 +12,4 @@ data class Employee(
     val tableNum: String? = null,
     val status: String? = null,
     val achievement: String? = null
-    )
+)

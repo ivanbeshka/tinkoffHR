@@ -22,11 +22,11 @@ class CreateReviewFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentCreateReviewBinding.inflate(inflater, container, false)
 
-        placesViewModel.getPlaceById(placeId).observe(viewLifecycleOwner) {
-            binding.place = it
+        placesViewModel.getPlaceById(placeId).observe(viewLifecycleOwner) { place ->
+            place?.let { binding.place = it }
         }
 
         binding.btnBack.setOnClickListener {
