@@ -40,4 +40,9 @@
         <item name="contentInsetRight">0dp</item>
         <item name="contentInsetLeft">0dp</item>
     </style>
+
+    <style name="MyDialogStyle" parent="Base.Theme.AppCompat.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="background">@color/transparent</item>
+    </style>
 </resources>

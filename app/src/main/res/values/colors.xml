@@ -31,6 +31,8 @@
     <color name="employee_email">#858484</color>
     <color name="my_avatar_background">#2B2B2B</color>
 
+    <color name="dialog_background">#141414</color>
+
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#9C9C9C</color>
 </resources>
 
