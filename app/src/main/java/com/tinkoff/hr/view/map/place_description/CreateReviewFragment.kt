@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.tinkoff.hr.databinding.FragmentCreateReviewBinding
+import com.tinkoff.hr.utils.showToast
 import com.tinkoff.hr.viewmodels.PlacesViewModel
 
 class CreateReviewFragment : Fragment() {
@@ -25,8 +26,17 @@ class CreateReviewFragment : Fragment() {
     ): View {
         val binding = FragmentCreateReviewBinding.inflate(inflater, container, false)
 
-        placesViewModel.getPlaceById(placeId).observe(viewLifecycleOwner) { place ->
-            place?.let { binding.place = it }
+        placesViewModel.getPlaceById(placeId).observe(viewLifecycleOwner) { state ->
+            state.on(
+                success = {
+                    binding.place = it
+                },
+                error = { throwable ->
+                    throwable.message?.let {
+                        showToast(it)
+                    }
+                }
+            )
         }
 
         binding.btnBack.setOnClickListener {
@@ -36,7 +46,6 @@ class CreateReviewFragment : Fragment() {
         binding.btnSendReview.setOnClickListener {
             findNavController().navigateUp()
         }
-
 
         return binding.root
     }

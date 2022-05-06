@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.tinkoff.hr.databinding.FragmentOrdersBinding
+import com.tinkoff.hr.utils.showToast
 import com.tinkoff.hr.viewmodels.FiltersViewModel
 import com.tinkoff.hr.viewmodels.OrdersViewModel
 
@@ -29,15 +30,35 @@ class OrdersFragment : Fragment(), OrdersAdapter.OnOrderClickListener, FiltersAd
         binding.rvOrders.layoutManager = GridLayoutManager(requireContext(), SPAN_COUNT)
         binding.rvOrders.adapter = ordersAdapter
         binding.rvOrders.itemAnimator = null
-        ordersViewModel.getOrders().observe(viewLifecycleOwner){
-            ordersAdapter.data = it
+        ordersViewModel.getOrders().observe(viewLifecycleOwner){ state ->
+            state.on(
+                success = {
+                    ordersAdapter.data = it
+                },
+                error = { throwable ->
+                    throwable.message?.let {
+                        showToast(it)
+                    }
+                }
+            )
+
         }
 
         binding.rvFilters.adapter = filtersAdapter
         binding.rvFilters.itemAnimator = null
-        filtersViewModel.getFilters().observe(viewLifecycleOwner){
-            filtersAdapter.data = it
-            ordersViewModel.setFilters(it)
+        filtersViewModel.getFilters().observe(viewLifecycleOwner){ state ->
+            state.on(
+                success = {
+                    filtersAdapter.data = it
+                    ordersViewModel.setFilters(it)
+                },
+                error = { throwable ->
+                    throwable.message?.let {
+                        showToast(it)
+                    }
+                }
+            )
+
         }
 
         return binding.root

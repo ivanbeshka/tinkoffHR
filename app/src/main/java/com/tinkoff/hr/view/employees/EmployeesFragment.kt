@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.tinkoff.hr.data.Employee
 import com.tinkoff.hr.databinding.FragmentEmployeesBinding
+import com.tinkoff.hr.utils.showToast
 import com.tinkoff.hr.viewmodels.EmployeesViewModel
 
 class EmployeesFragment : Fragment(), EmployeesAdapter.OnItemClickListener {
@@ -25,9 +26,18 @@ class EmployeesFragment : Fragment(), EmployeesAdapter.OnItemClickListener {
     ): View {
         val binding = FragmentEmployeesBinding.inflate(inflater, container, false)
 
-        employeesViewModel.getEmployees().observe(viewLifecycleOwner) {
-            binding.employee = it.first()
-            employeesAdapter.data = it
+        employeesViewModel.getEmployees().observe(viewLifecycleOwner) { state ->
+            state.on(
+                success = {
+                    binding.employee = it.first()
+                    employeesAdapter.data = it
+                },
+                error = { throwable ->
+                    throwable.message?.let {
+                        showToast(it)
+                    }
+                }
+            )
         }
 
         binding.rvEmployees.adapter = employeesAdapter

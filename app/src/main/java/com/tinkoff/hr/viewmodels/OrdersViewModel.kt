@@ -2,49 +2,59 @@ package com.tinkoff.hr.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.tinkoff.hr.api.OrdersApi
 import com.tinkoff.hr.data.Filter
 import com.tinkoff.hr.data.Filter.Companion.FILTER_ALL_NAME
 import com.tinkoff.hr.data.Order
+import com.tinkoff.hr.repository.OrdersRepository
+import com.tinkoff.hr.viewmodels.common.*
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.rxkotlin.subscribeBy
+import io.reactivex.schedulers.Schedulers
 
-class OrdersViewModel : ViewModel() {
-    private val getOrders = listOf(
-        Order(1, "", "Сушки FINE LIFE Малютка с маком, 350 г", 199, listOf("Бакалея")),
-        Order(2, "", "Молоко, 350 мл", 199, listOf("Молочные продукты")),
-        Order(3, "", "Печеньки, 350 г", 199, listOf("Печеньки", "Бакалея")),
-        Order(4, "", "Живой кофе Ирландский ликер зерно 1000 гр", 199, listOf("Кофе")),
-        Order(5, "", "Кофе в зернах Lavazza Crema e Aroma, 1 кг", 199, listOf("Кофе")),
-        Order(6, "", "Хлеб", 199, listOf("Выпечка")),
-        Order(7, "", "Тоже хлеб", 199, listOf("Выпечка")),
-        Order(8, "", "Сгущёнка", 199, listOf("Молочные продукты")),
-        Order(9, "", "Йогурт", 199, listOf("Молочные продукты"))
-    )
+class OrdersViewModel : RxViewModel() {
 
-    private val orders: MutableLiveData<List<Order>> by lazy {
-        MutableLiveData<List<Order>>().also {
-            it.value = getOrders
-        }
+    private val repository = OrdersRepository(OrdersApi())
+
+    private val orders = MutableLiveData<ScreenState<List<Order>>>()
+
+    fun getOrders(): LiveData<ScreenState<List<Order>>> {
+        repository.getAllOrders()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { orders.value = LoadingScreenState() }
+            .subscribeBy(
+                onSuccess = {
+                    orders.value = SuccessScreenState(it)
+                },
+                onError = {
+                    orders.value = ErrorScreenState(it)
+                }
+            )
+            .disposeOnFinish()
+
+        return orders
     }
 
-    fun getOrders(): LiveData<List<Order>> = orders
-
     fun setIsSelected(orderId: Int, isSelected: Boolean) {
-        orders.value?.find { it.id == orderId }?.selected = isSelected
+        if (orders.value is SuccessScreenState) {
+            (orders.value as SuccessScreenState).data.find { it.id == orderId }?.selected = isSelected
+        }
     }
 
     fun setFilters(filters: List<Filter>) {
-        val selectedFilters = filters.filter { it.isSelected }.map { it.name }
-
-        if (selectedFilters.contains(FILTER_ALL_NAME)) {
-            orders.value = getOrders
-        } else {
-            val filteredOrders = getOrders.filter { order ->
-                order.categories.any { category ->
-                    selectedFilters.contains(category)
+        repository.getOrdersByFilter(filters)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { orders.value = LoadingScreenState() }
+            .subscribeBy(
+                onSuccess = {
+                    orders.value = SuccessScreenState(it)
+                },
+                onError = {
+                    orders.value = ErrorScreenState(it)
                 }
-            }
-
-            orders.value = filteredOrders.toList()
-        }
+            )
+            .disposeOnFinish()
     }
 }
