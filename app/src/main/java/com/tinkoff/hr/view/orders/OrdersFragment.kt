@@ -12,7 +12,7 @@ import com.tinkoff.hr.utils.showToast
 import com.tinkoff.hr.viewmodels.FiltersViewModel
 import com.tinkoff.hr.viewmodels.OrdersViewModel
 
-class OrdersFragment : Fragment(), OrdersAdapter.OnOrderClickListener, FiltersAdapter.OnFilterClickListener {
+class OrdersFragment : Fragment(), OrdersAdapter.OnProductClickListener, FiltersAdapter.OnFilterClickListener {
 
     private val filtersViewModel: FiltersViewModel by viewModels()
     private val ordersViewModel: OrdersViewModel by viewModels()
@@ -29,7 +29,7 @@ class OrdersFragment : Fragment(), OrdersAdapter.OnOrderClickListener, FiltersAd
 
         binding.rvOrders.layoutManager = GridLayoutManager(requireContext(), SPAN_COUNT)
         binding.rvOrders.adapter = ordersAdapter
-        binding.rvOrders.itemAnimator = null
+
         ordersViewModel.getOrders().observe(viewLifecycleOwner){ state ->
             state.on(
                 success = {
@@ -68,8 +68,8 @@ class OrdersFragment : Fragment(), OrdersAdapter.OnOrderClickListener, FiltersAd
         filtersViewModel.setFilterIsSelected(isSelected, position)
     }
 
-    override fun onItemClick(orderId: Int, isSelected: Boolean) {
-        ordersViewModel.setIsSelected(orderId, isSelected)
+    override fun onItemClick(productId: String, isSelected: Boolean) {
+        ordersViewModel.setIsSelected(productId, isSelected)
     }
 
     private companion object {

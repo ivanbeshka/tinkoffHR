@@ -2,8 +2,8 @@ package com.tinkoff.hr.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.tinkoff.hr.api.FAQApi
-import com.tinkoff.hr.data.FAQ
+import com.tinkoff.hr.data.api.FAQApi
+import com.tinkoff.hr.domain.FAQ
 import com.tinkoff.hr.repository.FAQRepository
 import com.tinkoff.hr.viewmodels.common.*
 import io.reactivex.android.schedulers.AndroidSchedulers

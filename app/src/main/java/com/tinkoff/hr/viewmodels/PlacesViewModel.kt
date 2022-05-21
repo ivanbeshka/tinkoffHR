@@ -2,8 +2,8 @@ package com.tinkoff.hr.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.tinkoff.hr.api.PlacesApi
-import com.tinkoff.hr.data.Place
+import com.tinkoff.hr.data.api.PlacesApi
+import com.tinkoff.hr.domain.Place
 import com.tinkoff.hr.repository.PlacesRepository
 import com.tinkoff.hr.viewmodels.common.*
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -35,7 +35,7 @@ class PlacesViewModel : RxViewModel() {
         return places
     }
 
-    fun getPlaceById(placeId: Int): LiveData<ScreenState<Place>> {
+    fun getPlaceById(placeId: String): LiveData<ScreenState<Place>> {
         repository.getPlaceById(placeId)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

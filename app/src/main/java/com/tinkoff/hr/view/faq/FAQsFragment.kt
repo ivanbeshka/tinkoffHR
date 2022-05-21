@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.tinkoff.hr.data.FAQ
+import com.tinkoff.hr.domain.FAQ
 import com.tinkoff.hr.databinding.FragmentFaqsBinding
 import com.tinkoff.hr.utils.showToast
 import com.tinkoff.hr.viewmodels.FAQViewModel

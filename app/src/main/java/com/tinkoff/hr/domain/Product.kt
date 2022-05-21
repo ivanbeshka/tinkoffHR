@@ -1,8 +1,8 @@
-package com.tinkoff.hr.data
+package com.tinkoff.hr.domain
 
-data class Order(
-    val id: Int,
-    val article: String,
+data class Product(
+    val id: String,
+    val article: Int,
     val name: String,
     val count: Int,
     val categories: List<String>,

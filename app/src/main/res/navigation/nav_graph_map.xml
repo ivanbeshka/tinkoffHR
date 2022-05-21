@@ -21,7 +21,7 @@
         tools:layout="@layout/fragment_create_review">
         <argument
             android:name="placeId"
-            app:argType="integer"
+            app:argType="string"
             app:nullable="false"/>
     </fragment>
 </navigation>

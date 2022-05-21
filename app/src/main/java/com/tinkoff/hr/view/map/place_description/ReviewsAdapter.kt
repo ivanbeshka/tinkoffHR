@@ -3,7 +3,7 @@ package com.tinkoff.hr.view.map.place_description
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.tinkoff.hr.data.PlaceReview
+import com.tinkoff.hr.domain.PlaceReview
 import com.tinkoff.hr.databinding.ItemPlaceReviewBinding
 
 class ReviewsAdapter(private val data: List<PlaceReview>) : RecyclerView.Adapter<ReviewsAdapter.ViewHolder>() {

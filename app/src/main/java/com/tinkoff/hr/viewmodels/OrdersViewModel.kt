@@ -2,10 +2,9 @@ package com.tinkoff.hr.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.tinkoff.hr.api.OrdersApi
-import com.tinkoff.hr.data.Filter
-import com.tinkoff.hr.data.Filter.Companion.FILTER_ALL_NAME
-import com.tinkoff.hr.data.Order
+import com.tinkoff.hr.data.api.OrdersApi
+import com.tinkoff.hr.domain.Filter
+import com.tinkoff.hr.domain.Product
 import com.tinkoff.hr.repository.OrdersRepository
 import com.tinkoff.hr.viewmodels.common.*
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -16,10 +15,10 @@ class OrdersViewModel : RxViewModel() {
 
     private val repository = OrdersRepository(OrdersApi())
 
-    private val orders = MutableLiveData<ScreenState<List<Order>>>()
+    private val orders = MutableLiveData<ScreenState<List<Product>>>()
 
-    fun getOrders(): LiveData<ScreenState<List<Order>>> {
-        repository.getAllOrders()
+    fun getOrders(): LiveData<ScreenState<List<Product>>> {
+        repository.getAllProducts()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { orders.value = LoadingScreenState() }
@@ -36,14 +35,16 @@ class OrdersViewModel : RxViewModel() {
         return orders
     }
 
-    fun setIsSelected(orderId: Int, isSelected: Boolean) {
+    fun setIsSelected(productId: String, isSelected: Boolean) {
         if (orders.value is SuccessScreenState) {
-            (orders.value as SuccessScreenState).data.find { it.id == orderId }?.selected = isSelected
+            (orders.value as SuccessScreenState).data.find { it.id == productId }?.selected = isSelected
         }
     }
 
     fun setFilters(filters: List<Filter>) {
-        repository.getOrdersByFilter(filters)
+        val selectedFilters = filters.filter { it.isSelected }
+
+        repository.getProductsByFilter(selectedFilters)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { orders.value = LoadingScreenState() }

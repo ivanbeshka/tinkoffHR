@@ -4,7 +4,7 @@
     <data>
         <variable
             name="place"
-            type="com.tinkoff.hr.data.Place" />
+            type="com.tinkoff.hr.domain.Place" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -43,15 +43,15 @@
             android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
             android:gravity="center"
-            android:text="@{place.averagePrice}"
+            android:text="@{place.averageCheck}"
             app:layout_constraintEnd_toStartOf="@+id/tv_place_rating"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_place_rating"
-            android:layout_width="20dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="10dp"
             android:gravity="center"
             android:layout_marginTop="8dp"
             android:text="@{place.rating}"

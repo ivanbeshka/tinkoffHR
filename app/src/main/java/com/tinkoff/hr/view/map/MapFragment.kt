@@ -14,7 +14,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.tinkoff.hr.R
-import com.tinkoff.hr.data.Place
+import com.tinkoff.hr.domain.Place
 import com.tinkoff.hr.databinding.FragmentMapBinding
 import com.tinkoff.hr.utils.showToast
 import com.tinkoff.hr.view.map.place_description.PlaceBottomSheet
@@ -34,7 +34,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, PlacesAdapter.PlacesAutocomp
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentMapBinding.inflate(inflater, container, false)
 
         setMapAsync()

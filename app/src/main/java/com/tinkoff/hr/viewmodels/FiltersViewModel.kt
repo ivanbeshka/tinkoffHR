@@ -2,10 +2,9 @@ package com.tinkoff.hr.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.tinkoff.hr.api.FiltersApi
-import com.tinkoff.hr.data.Filter
-import com.tinkoff.hr.data.Filter.Companion.FILTER_ALL_POSITION
+import com.tinkoff.hr.data.api.FiltersApi
+import com.tinkoff.hr.domain.Filter
+import com.tinkoff.hr.domain.Filter.Companion.FILTER_ALL_POSITION
 import com.tinkoff.hr.repository.FiltersRepository
 import com.tinkoff.hr.viewmodels.common.*
 import io.reactivex.android.schedulers.AndroidSchedulers

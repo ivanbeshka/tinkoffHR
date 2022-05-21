@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "146820745307",
+    "project_id": "tinkoffhr-6849b",
+    "storage_bucket": "tinkoffhr-6849b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:146820745307:android:194b88065c6d6d4265d77e",
+        "android_client_info": {
+          "package_name": "com.tinkoff.hr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "146820745307-hsgjl8v6siu11a7rvvc7qpk8tkr3b12c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsuxj9LDVhBS0NXkhm0-xp-CdZeNT4Epc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "146820745307-hsgjl8v6siu11a7rvvc7qpk8tkr3b12c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

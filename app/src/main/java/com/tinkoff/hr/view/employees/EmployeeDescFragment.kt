@@ -7,14 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.tinkoff.hr.R
-import com.tinkoff.hr.data.Employee
 import com.tinkoff.hr.databinding.FragmentEmployeeDescBinding
 import com.tinkoff.hr.viewmodels.EmployeesViewModel
-import java.text.SimpleDateFormat
 import java.util.*
 
 class EmployeeDescFragment : Fragment() {

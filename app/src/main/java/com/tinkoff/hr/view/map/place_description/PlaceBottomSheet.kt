@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.tinkoff.hr.data.Place
+import com.tinkoff.hr.domain.Place
 import com.tinkoff.hr.databinding.BottomSheetPlaceBinding
 import com.tinkoff.hr.view.map.MapFragmentDirections
 
@@ -16,7 +16,7 @@ class PlaceBottomSheet(private val place: Place) : BottomSheetDialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = BottomSheetPlaceBinding.inflate(inflater, container, false)
         binding.place = place
 
