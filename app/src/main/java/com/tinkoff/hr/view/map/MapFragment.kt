@@ -14,8 +14,8 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.tinkoff.hr.R
-import com.tinkoff.hr.domain.Place
 import com.tinkoff.hr.databinding.FragmentMapBinding
+import com.tinkoff.hr.domain.Place
 import com.tinkoff.hr.utils.showToast
 import com.tinkoff.hr.view.map.place_description.PlaceBottomSheet
 import com.tinkoff.hr.viewmodels.PlacesViewModel
@@ -45,10 +45,8 @@ class MapFragment : Fragment(), OnMapReadyCallback, PlacesAdapter.PlacesAutocomp
                 success = {
                     placesAdapter.setData(it)
                 },
-                error = { throwable ->
-                    throwable.message?.let {
-                        showToast(it)
-                    }
+                error = {
+                    showToast(getString(R.string.oops_something_went_wrong))
                 }
             )
         }
@@ -86,10 +84,8 @@ class MapFragment : Fragment(), OnMapReadyCallback, PlacesAdapter.PlacesAutocomp
                         )
                     }
                 },
-                error = { throwable ->
-                    throwable.message?.let {
-                        showToast(it)
-                    }
+                error = {
+                    showToast(getString(R.string.oops_something_went_wrong))
                 }
             )
         }
@@ -120,10 +116,8 @@ class MapFragment : Fragment(), OnMapReadyCallback, PlacesAdapter.PlacesAutocomp
                     val place = places.firstOrNull { it.latLng == marker.position }
                     place?.let { showBottomSheet(place) }
                 },
-                error = { throwable ->
-                    throwable.message?.let {
-                        showToast(it)
-                    }
+                error = {
+                    showToast(getString(R.string.oops_something_went_wrong))
                 }
             )
         }

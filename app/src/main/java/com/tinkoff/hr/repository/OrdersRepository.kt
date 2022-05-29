@@ -14,13 +14,9 @@ class OrdersRepository(private val api: OrdersApi) {
         }
 
     fun getProductsByFilter(filters: List<Filter>): Single<List<Product>> {
-        return if (filters.map { it.name }.contains(Filter.FILTER_ALL_NAME)) {
-            getAllProducts()
-        } else {
-            api.getProductsWithFilters(filters.map { it.id })
+        return api.getProductsWithFilters(filters.map { it.id })
                 .map {
                     it.toDomainProducts()
                 }
-        }
     }
 }

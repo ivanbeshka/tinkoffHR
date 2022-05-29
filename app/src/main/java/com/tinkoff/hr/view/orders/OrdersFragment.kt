@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import com.tinkoff.hr.R
 import com.tinkoff.hr.databinding.FragmentOrdersBinding
 import com.tinkoff.hr.utils.showToast
 import com.tinkoff.hr.viewmodels.FiltersViewModel
@@ -35,10 +36,8 @@ class OrdersFragment : Fragment(), OrdersAdapter.OnProductClickListener, Filters
                 success = {
                     ordersAdapter.data = it
                 },
-                error = { throwable ->
-                    throwable.message?.let {
-                        showToast(it)
-                    }
+                error = {
+                    showToast(getString(R.string.oops_something_went_wrong))
                 }
             )
 
@@ -52,10 +51,8 @@ class OrdersFragment : Fragment(), OrdersAdapter.OnProductClickListener, Filters
                     filtersAdapter.data = it
                     ordersViewModel.setFilters(it)
                 },
-                error = { throwable ->
-                    throwable.message?.let {
-                        showToast(it)
-                    }
+                error = {
+                    showToast(getString(R.string.oops_something_went_wrong))
                 }
             )
 

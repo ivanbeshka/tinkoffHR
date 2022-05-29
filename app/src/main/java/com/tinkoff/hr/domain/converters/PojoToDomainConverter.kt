@@ -10,18 +10,18 @@ fun List<EmployeePojo>.toDomainEmployees(): List<Employee> {
         val stringTableNum = it.tableNum?.toString() ?: ""
 
         Employee(
-            it.id,
-            it.email,
-            it.fio,
-            it.photoUrl,
-            it.bio,
-            it.project,
-            it.companyPosition,
-            it.birthDate?.toDate()?.format(),
-            it.employmentDate?.toDate()?.format(),
-            stringTableNum,
-            it.status,
-            it.achievement
+            id = it.id,
+            email = it.email,
+            fio = it.fio,
+            photoUrl = it.photoUrl,
+            bio = it.bio,
+            project = it.project,
+            companyPosition = it.companyPosition,
+            birthDate = it.birthDate?.toDate()?.format(),
+            employmentDate = it.employmentDate?.toDate()?.format(),
+            tableNum = stringTableNum,
+            status = it.status,
+            achievement = it.achievement
         )
     }
 }
@@ -29,9 +29,9 @@ fun List<EmployeePojo>.toDomainEmployees(): List<Employee> {
 fun List<FAQPojo>.toDomainFaqs(): List<FAQ> {
     return map {
         FAQ(
-            it.id,
-            it.title,
-            it.content
+            id = it.id,
+            title = it.title,
+            content = it.content
         )
     }
 }
@@ -39,9 +39,9 @@ fun List<FAQPojo>.toDomainFaqs(): List<FAQ> {
 fun List<FilterPojo>.toDomainFilters(): List<Filter> {
     val filters = map {
         Filter(
-            it.id,
-            it.name,
-            false
+            id = it.id,
+            name = it.name,
+            isSelected = false
         )
     }
 
@@ -54,14 +54,14 @@ fun List<FilterPojo>.toDomainFilters(): List<Filter> {
 fun List<ProductPojo>.toDomainProducts(): List<Product> {
     return map {
         Product(
-            it.id,
-            it.article,
-            it.name,
-            it.count,
-            it.filterIds,
+            id = it.id,
+            article = it.article,
+            name = it.name,
+            count = it.count,
+            categories = it.filterIds,
             //todo
-            false,
-            it.photoUrl
+            selected = false,
+            photoUrl = it.photoUrl
         )
     }
 }
@@ -76,14 +76,14 @@ fun PlacePojo.toDomainPlace(reviews: List<PlaceReviewPojo>): Place {
     val latLng = LatLng(geolocation?.latitude ?: Double.NaN, geolocation?.longitude ?: Double.NaN)
 
     return Place(
-        id,
-        name,
-        businessLunch,
-        stringAverageCheck,
-        stringAverageRating,
-        latLng,
-        address,
-        reviews.toDomainReviews()
+        id = id,
+        name = name,
+        lunch = businessLunch,
+        averageCheck = stringAverageCheck,
+        rating = stringAverageRating,
+        latLng = latLng,
+        address = address,
+        reviews = reviews.toDomainReviews()
     )
 }
 
@@ -93,11 +93,11 @@ private fun List<PlaceReviewPojo>.toDomainReviews(): List<PlaceReview> {
         val stringRating = it.rating?.toString() ?: ""
 
         PlaceReview(
-            it.userId,
-            stringPrice,
-            stringRating,
-            it.pluses,
-            it.minuses
+            userId = it.userId,
+            price = stringPrice,
+            rating = stringRating,
+            pluses = it.pluses,
+            minuses = it.minuses
         )
     }
 }

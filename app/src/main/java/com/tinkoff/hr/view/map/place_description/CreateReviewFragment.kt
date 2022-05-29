@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.tinkoff.hr.R
 import com.tinkoff.hr.databinding.FragmentCreateReviewBinding
 import com.tinkoff.hr.utils.showToast
 import com.tinkoff.hr.viewmodels.PlacesViewModel
@@ -31,10 +32,8 @@ class CreateReviewFragment : Fragment() {
                 success = {
                     binding.place = it
                 },
-                error = { throwable ->
-                    throwable.message?.let {
-                        showToast(it)
-                    }
+                error = {
+                    showToast(getString(R.string.oops_something_went_wrong))
                 }
             )
         }

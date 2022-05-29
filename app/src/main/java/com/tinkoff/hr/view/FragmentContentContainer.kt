@@ -19,7 +19,7 @@ class FragmentContentContainer : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentContentContainerBinding.inflate(inflater, container, false)
 
         binding.bottomNav.setupWithNavController(

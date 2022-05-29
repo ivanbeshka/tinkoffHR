@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.tinkoff.hr.R
 import com.tinkoff.hr.domain.Employee
 import com.tinkoff.hr.databinding.FragmentEmployeesBinding
 import com.tinkoff.hr.utils.showToast
@@ -31,10 +32,8 @@ class EmployeesFragment : Fragment(), EmployeesAdapter.OnItemClickListener {
                     binding.employee = it.first()
                     employeesAdapter.data = it
                 },
-                error = { throwable ->
-                    throwable.message?.let {
-                        showToast(it)
-                    }
+                error = {
+                    showToast(getString(R.string.oops_something_went_wrong))
                 }
             )
         }

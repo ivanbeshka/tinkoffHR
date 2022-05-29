@@ -5,6 +5,7 @@ import com.tinkoff.hr.data.entities.PlacePojo
 import com.tinkoff.hr.data.entities.PlaceReviewPojo
 import com.tinkoff.hr.domain.Place
 import com.tinkoff.hr.domain.converters.toDomainPlace
+import com.tinkoff.hr.repository.common.maybeFromNullable
 import io.reactivex.Maybe
 import io.reactivex.Observable
 import io.reactivex.Single
@@ -27,11 +28,7 @@ class PlacesRepository(private val api: PlacesApi) {
                 val place = places.firstOrNull { it.id == id }
                     ?.toDomainPlace(emptyList())
 
-                return@flatMapMaybe if (place == null) {
-                    Maybe.empty()
-                } else {
-                    Maybe.just(place)
-                }
+                maybeFromNullable(place)
             }
 
     private fun concatWithReviews(place: PlacePojo): Observable<Pair<PlacePojo, List<PlaceReviewPojo>>> =
