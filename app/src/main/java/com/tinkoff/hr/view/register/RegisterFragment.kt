@@ -18,7 +18,7 @@ class RegisterFragment : Fragment(){
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentRegisterBinding.inflate(inflater, container, false)
 
         binding.btnStartWork.setOnClickListener {

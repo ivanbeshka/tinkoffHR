@@ -1,9 +1,9 @@
-package com.tinkoff.hr.data
+package com.tinkoff.hr.domain
 
 data class PlaceReview(
-    val userName: String,
+    val userId: String,
     val price: String,
-    val grade: String,
+    val rating: String,
     val pluses: String,
     val minuses: String
 )

@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.tinkoff.hr.data.Filter
+import com.tinkoff.hr.domain.Filter
 import com.tinkoff.hr.databinding.ItemOrdersFilterBinding
 
 class FiltersAdapter(private val listener: OnFilterClickListener) : RecyclerView.Adapter<FiltersAdapter.ViewHolder>() {

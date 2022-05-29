@@ -6,7 +6,7 @@
 
         <variable
             name="place"
-            type="com.tinkoff.hr.data.Place" />
+            type="com.tinkoff.hr.domain.Place" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

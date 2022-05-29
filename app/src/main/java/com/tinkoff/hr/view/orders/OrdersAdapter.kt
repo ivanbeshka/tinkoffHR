@@ -8,15 +8,15 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import com.tinkoff.hr.R
-import com.tinkoff.hr.data.Order
+import com.tinkoff.hr.domain.Product
 import com.tinkoff.hr.databinding.ItemOrderBinding
 
 class OrdersAdapter(
-    private val listener: OnOrderClickListener
+    private val listener: OnProductClickListener
 ) : RecyclerView.Adapter<OrdersAdapter.ViewHolder>() {
 
     private val differ = AsyncListDiffer(this, OrderDiffUtilCallback())
-    var data: List<Order>
+    var data: List<Product>
         get() = differ.currentList
         set(value) = differ.submitList(value)
 
@@ -52,12 +52,12 @@ class OrdersAdapter(
         return data.size
     }
 
-    private class OrderDiffUtilCallback : DiffUtil.ItemCallback<Order>() {
-        override fun areItemsTheSame(oldItem: Order, newItem: Order): Boolean {
+    private class OrderDiffUtilCallback : DiffUtil.ItemCallback<Product>() {
+        override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: Order, newItem: Order): Boolean {
+        override fun areContentsTheSame(oldItem: Product, newItem: Product): Boolean {
             return oldItem == newItem
         }
 
@@ -83,8 +83,8 @@ class OrdersAdapter(
         }
     }
 
-    interface OnOrderClickListener {
-        fun onItemClick(orderId: Int, isSelected: Boolean)
+    interface OnProductClickListener {
+        fun onItemClick(productId: String, isSelected: Boolean)
     }
 
     private companion object {

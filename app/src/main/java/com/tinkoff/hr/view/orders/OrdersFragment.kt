@@ -7,11 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
+import com.tinkoff.hr.R
 import com.tinkoff.hr.databinding.FragmentOrdersBinding
+import com.tinkoff.hr.utils.showToast
 import com.tinkoff.hr.viewmodels.FiltersViewModel
 import com.tinkoff.hr.viewmodels.OrdersViewModel
 
-class OrdersFragment : Fragment(), OrdersAdapter.OnOrderClickListener, FiltersAdapter.OnFilterClickListener {
+class OrdersFragment : Fragment(), OrdersAdapter.OnProductClickListener, FiltersAdapter.OnFilterClickListener {
 
     private val filtersViewModel: FiltersViewModel by viewModels()
     private val ordersViewModel: OrdersViewModel by viewModels()
@@ -28,16 +30,32 @@ class OrdersFragment : Fragment(), OrdersAdapter.OnOrderClickListener, FiltersAd
 
         binding.rvOrders.layoutManager = GridLayoutManager(requireContext(), SPAN_COUNT)
         binding.rvOrders.adapter = ordersAdapter
-        binding.rvOrders.itemAnimator = null
-        ordersViewModel.getOrders().observe(viewLifecycleOwner){
-            ordersAdapter.data = it
+
+        ordersViewModel.getOrders().observe(viewLifecycleOwner){ state ->
+            state.on(
+                success = {
+                    ordersAdapter.data = it
+                },
+                error = {
+                    showToast(getString(R.string.oops_something_went_wrong))
+                }
+            )
+
         }
 
         binding.rvFilters.adapter = filtersAdapter
         binding.rvFilters.itemAnimator = null
-        filtersViewModel.getFilters().observe(viewLifecycleOwner){
-            filtersAdapter.data = it
-            ordersViewModel.setFilters(it)
+        filtersViewModel.getFilters().observe(viewLifecycleOwner){ state ->
+            state.on(
+                success = {
+                    filtersAdapter.data = it
+                    ordersViewModel.setFilters(it)
+                },
+                error = {
+                    showToast(getString(R.string.oops_something_went_wrong))
+                }
+            )
+
         }
 
         return binding.root
@@ -47,8 +65,8 @@ class OrdersFragment : Fragment(), OrdersAdapter.OnOrderClickListener, FiltersAd
         filtersViewModel.setFilterIsSelected(isSelected, position)
     }
 
-    override fun onItemClick(orderId: Int, isSelected: Boolean) {
-        ordersViewModel.setIsSelected(orderId, isSelected)
+    override fun onItemClick(productId: String, isSelected: Boolean) {
+        ordersViewModel.setIsSelected(productId, isSelected)
     }
 
     private companion object {

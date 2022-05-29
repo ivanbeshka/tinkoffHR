@@ -6,7 +6,7 @@
     <data>
         <variable
             name="order"
-            type="com.tinkoff.hr.data.Order" />
+            type="com.tinkoff.hr.domain.Product" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

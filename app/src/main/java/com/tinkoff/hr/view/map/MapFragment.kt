@@ -14,8 +14,9 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.tinkoff.hr.R
-import com.tinkoff.hr.data.Place
 import com.tinkoff.hr.databinding.FragmentMapBinding
+import com.tinkoff.hr.domain.Place
+import com.tinkoff.hr.utils.showToast
 import com.tinkoff.hr.view.map.place_description.PlaceBottomSheet
 import com.tinkoff.hr.viewmodels.PlacesViewModel
 
@@ -25,6 +26,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, PlacesAdapter.PlacesAutocomp
     private val placesViewModel: PlacesViewModel by viewModels()
 
     private lateinit var map: GoogleMap
+    private lateinit var placesAdapter: PlacesAdapter
 
     private lateinit var binding: FragmentMapBinding
 
@@ -32,14 +34,21 @@ class MapFragment : Fragment(), OnMapReadyCallback, PlacesAdapter.PlacesAutocomp
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentMapBinding.inflate(inflater, container, false)
 
         setMapAsync()
 
-        val placesAdapter = PlacesAdapter(requireContext(), mutableListOf(), this)
-        placesViewModel.getPlaces().observe(viewLifecycleOwner) {
-            placesAdapter.setData(it)
+        placesAdapter = PlacesAdapter(requireContext(), mutableListOf(), this)
+        placesViewModel.getPlaces().observe(viewLifecycleOwner) { state ->
+            state.on(
+                success = {
+                    placesAdapter.setData(it)
+                },
+                error = {
+                    showToast(getString(R.string.oops_something_went_wrong))
+                }
+            )
         }
 
         val autocomplete = binding.autocompletePlace
@@ -63,14 +72,22 @@ class MapFragment : Fragment(), OnMapReadyCallback, PlacesAdapter.PlacesAutocomp
 
         map.setOnMarkerClickListener(this)
 
-        placesViewModel.getPlaces().observe(viewLifecycleOwner) { places ->
-            places.forEach {
-                map.addMarker(
-                    MarkerOptions()
-                        .position(it.latLng)
-                        .title(it.name)
-                )
-            }
+
+        placesViewModel.getPlaces().observe(viewLifecycleOwner) { state ->
+            state.on(
+                success = { places ->
+                    places.forEach {
+                        map.addMarker(
+                            MarkerOptions()
+                                .position(it.latLng)
+                                .title(it.name)
+                        )
+                    }
+                },
+                error = {
+                    showToast(getString(R.string.oops_something_went_wrong))
+                }
+            )
         }
 
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(TIN_LAT_LNG, ZOOM_ALL))
@@ -92,9 +109,17 @@ class MapFragment : Fragment(), OnMapReadyCallback, PlacesAdapter.PlacesAutocomp
     }
 
     override fun onMarkerClick(marker: Marker): Boolean {
-        placesViewModel.getPlaces().observe(viewLifecycleOwner) { places ->
-            val place = places.firstOrNull { it.latLng == marker.position }
-            place?.let { showBottomSheet(place) }
+
+        placesViewModel.getPlaces().observe(viewLifecycleOwner) {state ->
+            state.on(
+                success = { places ->
+                    val place = places.firstOrNull { it.latLng == marker.position }
+                    place?.let { showBottomSheet(place) }
+                },
+                error = {
+                    showToast(getString(R.string.oops_something_went_wrong))
+                }
+            )
         }
 
         return true
@@ -109,6 +134,4 @@ class MapFragment : Fragment(), OnMapReadyCallback, PlacesAdapter.PlacesAutocomp
         const val ZOOM_ALL = 15f
         const val ZOOM_PLACE = 17f
     }
-
-
 }

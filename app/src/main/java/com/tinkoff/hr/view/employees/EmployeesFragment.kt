@@ -6,10 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.tinkoff.hr.data.Employee
+import com.tinkoff.hr.R
+import com.tinkoff.hr.domain.Employee
 import com.tinkoff.hr.databinding.FragmentEmployeesBinding
+import com.tinkoff.hr.utils.showToast
 import com.tinkoff.hr.viewmodels.EmployeesViewModel
 
 class EmployeesFragment : Fragment(), EmployeesAdapter.OnItemClickListener {
@@ -25,9 +26,16 @@ class EmployeesFragment : Fragment(), EmployeesAdapter.OnItemClickListener {
     ): View {
         val binding = FragmentEmployeesBinding.inflate(inflater, container, false)
 
-        employeesViewModel.getEmployees().observe(viewLifecycleOwner) {
-            binding.employee = it.first()
-            employeesAdapter.data = it
+        employeesViewModel.getEmployees().observe(viewLifecycleOwner) { state ->
+            state.on(
+                success = {
+                    binding.employee = it.first()
+                    employeesAdapter.data = it
+                },
+                error = {
+                    showToast(getString(R.string.oops_something_went_wrong))
+                }
+            )
         }
 
         binding.rvEmployees.adapter = employeesAdapter

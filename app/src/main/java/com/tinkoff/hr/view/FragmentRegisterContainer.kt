@@ -12,7 +12,7 @@ class FragmentRegisterContainer : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentRegisterContainerBinding.inflate(inflater, container, false)
 
         return binding.root

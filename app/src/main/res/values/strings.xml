@@ -42,4 +42,5 @@
     <string name="delete_photo">Удалить фотографию</string>
     <string name="do_photo">Сделать снимок</string>
     <string name="download_from_device">Загрузить с утройства</string>
+    <string name="oops_something_went_wrong">Упс, что-то пошло не так</string>
 </resources>

@@ -5,7 +5,7 @@
     <data>
         <variable
             name="review"
-            type="com.tinkoff.hr.data.PlaceReview" />
+            type="com.tinkoff.hr.domain.PlaceReview" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="12dp"
                 android:layout_marginVertical="8dp"
-                android:text="@{review.userName}"
+                android:text="@{review.userId}"
                 android:textColor="@color/white"
                 android:textSize="10sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -85,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="12dp"
                 android:layout_marginVertical="8dp"
-                android:text="@{`Оценка: ` + review.grade}"
+                android:text="@{`Оценка: ` + review.rating}"
                 android:textColor="@color/white"
                 android:textSize="10sp"
                 app:layout_constraintBottom_toBottomOf="parent"

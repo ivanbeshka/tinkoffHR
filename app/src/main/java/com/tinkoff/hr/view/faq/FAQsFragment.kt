@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.tinkoff.hr.data.FAQ
+import com.tinkoff.hr.R
 import com.tinkoff.hr.databinding.FragmentFaqsBinding
+import com.tinkoff.hr.domain.FAQ
+import com.tinkoff.hr.utils.showToast
 import com.tinkoff.hr.viewmodels.FAQViewModel
 
 class FAQsFragment : Fragment(), FAQsAdapter.OnClickListener {
@@ -26,8 +28,15 @@ class FAQsFragment : Fragment(), FAQsAdapter.OnClickListener {
 
         binding.rvFaq.adapter = faqAdapter
 
-        faqViewModel.getFAQs().observe(viewLifecycleOwner) {
-            faqAdapter.data = it
+        faqViewModel.getFAQs().observe(viewLifecycleOwner) { state ->
+            state.on(
+                success = {
+                    faqAdapter.data = it
+                },
+                error = {
+                    showToast(getString(R.string.oops_something_went_wrong))
+                }
+            )
         }
 
         return binding.root

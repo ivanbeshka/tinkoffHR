@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.tinkoff.hr.data.Employee
+import com.tinkoff.hr.domain.Employee
 import com.tinkoff.hr.databinding.ItemEmployeeBinding
 
 class EmployeesAdapter(private val listener: OnItemClickListener) :

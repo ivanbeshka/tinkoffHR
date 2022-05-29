@@ -5,7 +5,7 @@
     <data>
         <variable
             name="filter"
-            type="com.tinkoff.hr.data.Filter" />
+            type="com.tinkoff.hr.domain.Filter" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
