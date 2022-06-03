@@ -20,10 +20,6 @@ data class PlacePojo(
     @get:PropertyName("geolocation")
     var geolocation: GeoPoint? = null,
 
-    @set:PropertyName("average_check")
-    @get:PropertyName("average_check")
-    var averageCheck: Float? = null,
-
     @set:PropertyName("business_lunch")
     @get:PropertyName("business_lunch")
     var businessLunch: String = ""

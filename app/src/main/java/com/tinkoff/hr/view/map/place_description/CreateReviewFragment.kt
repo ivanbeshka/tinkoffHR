@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.tinkoff.hr.R
 import com.tinkoff.hr.databinding.FragmentCreateReviewBinding
+import com.tinkoff.hr.domain.PlaceReview
 import com.tinkoff.hr.utils.showToast
 import com.tinkoff.hr.viewmodels.PlacesViewModel
 
@@ -43,9 +44,58 @@ class CreateReviewFragment : Fragment() {
         }
 
         binding.btnSendReview.setOnClickListener {
-            findNavController().navigateUp()
+            with(binding) {
+                val pluses = etPluses.text.toString()
+                val minuses = etMinuses.text.toString()
+                val grade = viewRating.rating
+                val price = etPrice.text.toString().toIntOrNull()
+
+                if (!showToastIfBlank(pluses, minuses) && !showToastIfNull(grade, price)) {
+                    val placeReview = PlaceReview(
+                        "IWPiQDppRkcpJ3n2OUl8",
+                        price,
+                        grade,
+                        pluses,
+                        minuses
+                    )
+                    subscribeOnAddReview(placeReview)
+                }
+            }
         }
 
         return binding.root
+    }
+
+    private fun subscribeOnAddReview(placeReview: PlaceReview) {
+        placesViewModel.addReview(placeReview, placeId).observe(viewLifecycleOwner) { state ->
+            state.on(
+                success = {
+                    findNavController().navigateUp()
+                },
+                error = {
+                    showToast(getString(R.string.oops_something_went_wrong))
+                }
+            )
+        }
+    }
+
+    private fun showToastIfBlank(vararg str: String): Boolean {
+        str.forEach {
+            if (it.isBlank()) {
+                showToast(getString(R.string.fill_in_all_the_fields))
+                return true
+            }
+        }
+        return false
+    }
+
+    private fun showToastIfNull(vararg int: Int?): Boolean {
+        int.forEach {
+            if (it == null) {
+                showToast(getString(R.string.fill_in_all_the_fields))
+                return true
+            }
+        }
+        return false
     }
 }

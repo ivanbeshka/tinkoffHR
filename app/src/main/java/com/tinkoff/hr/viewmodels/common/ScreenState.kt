@@ -20,7 +20,7 @@ sealed class ScreenState<T> {
 
 class LoadingScreenState<T> : ScreenState<T>()
 class SuccessScreenState<T>(val data: T) : ScreenState<T>()
-class ErrorScreenState<T>(val throwable: Throwable) : ScreenState<T>() {
+class ErrorScreenState<T>(private val throwable: Throwable) : ScreenState<T>() {
     private var isShowedError = false
 
     fun onError(doOnError: (Throwable) -> Unit) {

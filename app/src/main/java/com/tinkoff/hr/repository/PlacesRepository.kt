@@ -4,37 +4,43 @@ import com.tinkoff.hr.data.api.PlacesApi
 import com.tinkoff.hr.data.entities.PlacePojo
 import com.tinkoff.hr.data.entities.PlaceReviewPojo
 import com.tinkoff.hr.domain.Place
+import com.tinkoff.hr.domain.PlaceReview
 import com.tinkoff.hr.domain.converters.toDomainPlace
-import com.tinkoff.hr.repository.common.maybeFromNullable
+import com.tinkoff.hr.domain.converters.toPojoReview
+import io.reactivex.Completable
 import io.reactivex.Maybe
-import io.reactivex.Observable
 import io.reactivex.Single
 
 class PlacesRepository(private val api: PlacesApi) {
 
-    fun getPlaces(): Single<List<Place>> = api.getPlaces()
-        .flattenAsObservable { it }
-        .flatMap { place ->
-            concatWithReviews(place)
-        }
-        .map { (place, reviews) ->
-            place.toDomainPlace(reviews)
-        }
-        .toList()
+    fun getPlaces(): Single<List<Place>> =
+        api.getPlaces()
+            .flattenAsObservable { it }
+            .flatMap { place ->
+                concatWithReviews(place).toObservable()
+            }
+            .map { (place, reviews) ->
+                place.toDomainPlace(reviews)
+            }
+            .toList()
 
     fun getPlaceById(id: String): Maybe<Place> =
-        api.getPlaces()
-            .flatMapMaybe { places ->
-                val place = places.firstOrNull { it.id == id }
-                    ?.toDomainPlace(emptyList())
-
-                maybeFromNullable(place)
+        api.getPlaceById(id)
+            .flatMap {
+                concatWithReviews(it).toMaybe()
+            }
+            .map { (place, reviews) ->
+                place.toDomainPlace(reviews)
             }
 
-    private fun concatWithReviews(place: PlacePojo): Observable<Pair<PlacePojo, List<PlaceReviewPojo>>> =
+    fun addReview(review: PlaceReview, placeId: String): Completable =
+        api.addReview(
+            review.toPojoReview(placeId)
+        )
+
+    private fun concatWithReviews(place: PlacePojo): Single<Pair<PlacePojo, List<PlaceReviewPojo>>> =
         api.getReviews(place.id)
             .map {
                 Pair(place, it)
             }
-            .toObservable()
 }

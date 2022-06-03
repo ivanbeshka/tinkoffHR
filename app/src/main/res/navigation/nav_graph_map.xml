@@ -11,8 +11,8 @@
         android:label="FragmentMap"
         tools:layout="@layout/fragment_map">
         <action
-            android:id="@+id/action_fragmentMap_to_createReviewFragment"
-            app:destination="@id/createReviewFragment" />
+            android:id="@+id/action_fragmentMap_to_placeBottomSheet"
+            app:destination="@id/placeBottomSheet" />
     </fragment>
     <fragment
         android:id="@+id/createReviewFragment"
@@ -24,4 +24,17 @@
             app:argType="string"
             app:nullable="false"/>
     </fragment>
+    <dialog
+        android:id="@+id/placeBottomSheet"
+        android:name="com.tinkoff.hr.view.map.place_description.PlaceBottomSheet"
+        android:label="PlaceBottomSheet"
+        tools:layout="@layout/bottom_sheet_place">
+        <argument
+            android:name="placeId"
+            app:argType="string"
+            app:nullable="false"/>
+        <action
+            android:id="@+id/action_placeBottomSheet_to_createReviewFragment"
+            app:destination="@id/createReviewFragment" />
+    </dialog>
 </navigation>

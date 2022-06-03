@@ -92,6 +92,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_pluses_review">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_pluses"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapSentences|textMultiLine"
@@ -122,6 +123,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_minuses_review">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_minuses"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapSentences"
@@ -152,6 +154,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_review_review">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_review"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapSentences"
@@ -211,9 +214,10 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_check">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textCapSentences"
+                android:inputType="number"
                 android:textColor="@color/til_create_review_hint"/>
         </com.google.android.material.textfield.TextInputLayout>
 
