@@ -1,11 +1,10 @@
 package com.tinkoff.hr.data.api.common
 
 import com.google.android.gms.tasks.Task
-import com.google.firebase.firestore.DocumentReference
 import io.reactivex.Completable
 
-fun createCompletableForTask(
-    taskBuilder: () -> Task<DocumentReference>
+fun <T : Any> createCompletableForTask(
+    taskBuilder: () -> Task<T>
 ): Completable {
     return Completable.create { emitter ->
         taskBuilder()
@@ -17,3 +16,4 @@ fun createCompletableForTask(
             }
     }
 }
+

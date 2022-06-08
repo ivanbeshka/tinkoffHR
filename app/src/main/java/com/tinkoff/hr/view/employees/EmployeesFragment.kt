@@ -29,7 +29,7 @@ class EmployeesFragment : Fragment(), EmployeesAdapter.OnItemClickListener {
         employeesViewModel.getEmployees().observe(viewLifecycleOwner) { state ->
             state.on(
                 success = {
-                    binding.employee = it.first()
+                    binding.myEmployee = it.first()
                     employeesAdapter.data = it
                 },
                 error = {
@@ -41,8 +41,7 @@ class EmployeesFragment : Fragment(), EmployeesAdapter.OnItemClickListener {
         binding.rvEmployees.adapter = employeesAdapter
 
         binding.containerMy.setOnClickListener {
-
-            binding.employee?.let { employee ->
+            binding.myEmployee?.let { employee ->
                 onItemClick(employee)
             }
         }

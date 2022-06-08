@@ -1,6 +1,6 @@
 package com.tinkoff.hr.viewmodels.common
 
-sealed class ScreenState<T> {
+sealed class ScreenState<out T> {
     private val onSuccessEmpty: (T) -> Unit = {}
     private val onErrorEmpty: (Throwable) -> Unit = {}
     private val onLoadingEmpty: () -> Unit = {}
@@ -18,9 +18,9 @@ sealed class ScreenState<T> {
     }
 }
 
-class LoadingScreenState<T> : ScreenState<T>()
+class LoadingScreenState : ScreenState<Nothing>()
 class SuccessScreenState<T>(val data: T) : ScreenState<T>()
-class ErrorScreenState<T>(private val throwable: Throwable) : ScreenState<T>() {
+class ErrorScreenState(private val throwable: Throwable) : ScreenState<Nothing>() {
     private var isShowedError = false
 
     fun onError(doOnError: (Throwable) -> Unit) {

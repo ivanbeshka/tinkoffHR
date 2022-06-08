@@ -6,7 +6,7 @@
     <data>
 
         <variable
-            name="employee"
+            name="myEmployee"
             type="com.tinkoff.hr.domain.Employee" />
     </data>
 
@@ -63,7 +63,7 @@
                         android:layout_marginEnd="10dp"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:text="@{employee.fio}"
+                        android:text="@{myEmployee.fio}"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold"
@@ -78,7 +78,7 @@
                         android:layout_marginTop="8dp"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:text="@{employee.email}"
+                        android:text="@{myEmployee.email}"
                         android:textSize="12sp"
                         app:layout_constraintEnd_toEndOf="@+id/tv_my_fio"
                         app:layout_constraintStart_toStartOf="@+id/tv_my_fio"
