@@ -1,5 +1,6 @@
 package com.tinkoff.hr.data.api.common
 
+import android.util.Log
 import com.google.android.gms.tasks.Task
 import io.reactivex.Completable
 
@@ -13,6 +14,7 @@ fun <T : Any> createCompletableForTask(
             }
             .addOnFailureListener { exception ->
                 emitter.onError(exception)
+                Log.d(taskBuilder.toString(), "createCompletableForTask: $exception")
             }
     }
 }
