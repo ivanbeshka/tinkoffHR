@@ -11,8 +11,8 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.tinkoff.hr.R
 import com.tinkoff.hr.databinding.FragmentEmployeeDescBinding
+import com.tinkoff.hr.utils.showToast
 import com.tinkoff.hr.viewmodels.EmployeesViewModel
-import java.util.*
 
 class EmployeeDescFragment : Fragment() {
 
@@ -44,26 +44,56 @@ class EmployeeDescFragment : Fragment() {
     }
 
     private fun setEditableListeners(binding: FragmentEmployeeDescBinding) {
-        setEditableOnClick(binding.tilStatus, binding.etStatus)
-        setEditableOnClick(binding.tilAboutMe, binding.etAboutMe)
+        setEditableOnClick(binding.tilStatus, binding.etStatus, onUpdateStatus)
+        setEditableOnClick(binding.tilAboutMe, binding.etAboutMe, onUpdateBio)
     }
 
-    private fun setEditableOnClick(til: TextInputLayout, et: TextInputEditText) {
+    private val onUpdateStatus: (String) -> Unit = { status ->
+        employeesViewModel.setStatus(status)
+            .observe(viewLifecycleOwner) { state ->
+                state.on(
+                    error = {
+                        showToast(getString(R.string.oops_something_went_wrong))
+                    }
+                )
+            }
+    }
+
+    private val onUpdateBio: (String) -> Unit = { bio ->
+        employeesViewModel.setBio(bio)
+            .observe(viewLifecycleOwner) { state ->
+                state.on(
+                    error = {
+                        showToast(getString(R.string.oops_something_went_wrong))
+                    }
+                )
+            }
+    }
+
+    private fun setEditableOnClick(
+        til: TextInputLayout,
+        et: TextInputEditText,
+        onEdited: (text: String) -> Unit
+    ) {
         var isEdit = false
         til.setEndIconOnClickListener {
-            if (!isEdit) {
+            isEdit = !isEdit
+
+            if (isEdit) {
                 et.isCursorVisible = true
                 et.isFocusableInTouchMode = true
                 et.isFocusable = true
                 et.requestFocus()
                 til.setEndIconDrawable(R.drawable.ic_check)
-                isEdit = !isEdit
             } else {
                 et.isCursorVisible = false
                 et.isFocusable = false
                 til.setEndIconDrawable(R.drawable.ic_create)
-                isEdit = !isEdit
+
+                onEdited(et.text.toString())
             }
         }
     }
 }
+
+

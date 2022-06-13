@@ -15,7 +15,7 @@ class CustomGradeView @JvmOverloads constructor(
 ) : LinearLayout(context, attrs, defStyleAttr) {
 
     private var views = listOf<View>()
-    var rating = 0
+    var rating: Int? = null
         private set
 
     init {

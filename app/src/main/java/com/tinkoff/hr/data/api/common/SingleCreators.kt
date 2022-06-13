@@ -4,7 +4,7 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.QuerySnapshot
 import io.reactivex.Single
 
-fun <T : Any> createSingleForTask(
+fun <T : Any> createSingleForQuery(
     taskBuilder: () -> Task<QuerySnapshot>,
     valueBuilder: (QuerySnapshot) -> T
 ): Single<T> {
@@ -18,3 +18,4 @@ fun <T : Any> createSingleForTask(
             }
     }
 }
+

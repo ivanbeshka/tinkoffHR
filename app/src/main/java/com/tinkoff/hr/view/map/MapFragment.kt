@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -17,7 +18,6 @@ import com.tinkoff.hr.R
 import com.tinkoff.hr.databinding.FragmentMapBinding
 import com.tinkoff.hr.domain.Place
 import com.tinkoff.hr.utils.showToast
-import com.tinkoff.hr.view.map.place_description.PlaceBottomSheet
 import com.tinkoff.hr.viewmodels.PlacesViewModel
 
 class MapFragment : Fragment(), OnMapReadyCallback, PlacesAdapter.PlacesAutocompleteListener,
@@ -105,7 +105,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, PlacesAdapter.PlacesAutocomp
     override fun onPlaceClick(place: Place) {
         binding.autocompletePlace.setText(place.name)
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(place.latLng, ZOOM_PLACE))
-        showBottomSheet(place)
+        showPlaceBottomSheet(place.id)
     }
 
     override fun onMarkerClick(marker: Marker): Boolean {
@@ -114,7 +114,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, PlacesAdapter.PlacesAutocomp
             state.on(
                 success = { places ->
                     val place = places.firstOrNull { it.latLng == marker.position }
-                    place?.let { showBottomSheet(place) }
+                    place?.let { showPlaceBottomSheet(place.id) }
                 },
                 error = {
                     showToast(getString(R.string.oops_something_went_wrong))
@@ -125,8 +125,10 @@ class MapFragment : Fragment(), OnMapReadyCallback, PlacesAdapter.PlacesAutocomp
         return true
     }
 
-    private fun showBottomSheet(place: Place) {
-        PlaceBottomSheet(place).show(childFragmentManager, PlaceBottomSheet.TAG)
+    private fun showPlaceBottomSheet(placeId: String) {
+        if (findNavController().currentDestination?.id != R.id.placeBottomSheet) {
+            findNavController().navigate(MapFragmentDirections.actionFragmentMapToPlaceBottomSheet(placeId))
+        }
     }
 
     private companion object {

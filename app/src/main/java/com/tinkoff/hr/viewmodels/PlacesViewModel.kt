@@ -4,8 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.tinkoff.hr.data.api.PlacesApi
 import com.tinkoff.hr.domain.Place
+import com.tinkoff.hr.domain.PlaceReview
 import com.tinkoff.hr.repository.PlacesRepository
 import com.tinkoff.hr.viewmodels.common.*
+import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
@@ -16,6 +18,7 @@ class PlacesViewModel : RxViewModel() {
 
     private val place = MutableLiveData<ScreenState<Place>>()
     private val places = MutableLiveData<ScreenState<List<Place>>>()
+    private val addReview = MutableLiveData<ScreenState<Boolean>>()
 
     fun getPlaces(): LiveData<ScreenState<List<Place>>> {
         repository.getPlaces()
@@ -53,5 +56,25 @@ class PlacesViewModel : RxViewModel() {
             .disposeOnFinish()
 
         return place
+    }
+
+    fun addReview(placeReview: PlaceReview, placeId: String): LiveData<ScreenState<Boolean>> {
+        repository.addReview(placeReview, placeId)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe {
+                addReview.value = LoadingScreenState()
+            }
+            .subscribeBy(
+                onComplete = {
+                    addReview.value = SuccessScreenState(true)
+                },
+                onError = {
+                    addReview.value = ErrorScreenState(it)
+                }
+            )
+            .disposeOnFinish()
+
+        return addReview
     }
 }

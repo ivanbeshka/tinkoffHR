@@ -67,10 +67,10 @@ fun List<ProductPojo>.toDomainProducts(): List<Product> {
 }
 
 fun PlacePojo.toDomainPlace(reviews: List<PlaceReviewPojo>): Place {
-    val stringAverageCheck = averageCheck?.toString() ?: ""
+    val averageCheck = reviews.mapNotNull { it.price }.toTypedArray().average()
+    val stringAverageCheck = if (averageCheck.isNaN()) "-" else averageCheck.toString()
 
-    val allRating = reviews.mapNotNull { it.rating }
-    val averageRating = allRating.sumOf { it.toDouble() } / allRating.size
+    val averageRating = reviews.mapNotNull { it.rating }.toTypedArray().average()
     val stringAverageRating = if (averageRating.isNaN()) "-" else averageRating.toString()
 
     val latLng = LatLng(geolocation?.latitude ?: Double.NaN, geolocation?.longitude ?: Double.NaN)
@@ -89,13 +89,10 @@ fun PlacePojo.toDomainPlace(reviews: List<PlaceReviewPojo>): Place {
 
 private fun List<PlaceReviewPojo>.toDomainReviews(): List<PlaceReview> {
     return map {
-        val stringPrice = it.price?.toString() ?: ""
-        val stringRating = it.rating?.toString() ?: ""
-
         PlaceReview(
             userId = it.userId,
-            price = stringPrice,
-            rating = stringRating,
+            price = it.price,
+            rating = it.rating,
             pluses = it.pluses,
             minuses = it.minuses
         )
